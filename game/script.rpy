@@ -16,8 +16,15 @@ default player_pronoun_subject = "they"
 default player_pronoun_object = "them"
 default player_pronoun_possessive = "their"
 default player_pronoun_verb = "are"
+default player_pronoun_cap_subject = "They"
+default player_pronoun_cap_object = "Them"
+default player_pronoun_cap_possessive = "Their"
 
 default day_index = 0
+
+image eggs = "eggs.png"
+image shit = "shit.png"
+image sir = "sir.png"
 
 label start:
     call l_set_pronouns
@@ -56,29 +63,46 @@ label l_loop_evening:
     return
 
 label l_set_pronouns:
+    show sir at left
+    
     menu:
-        "Your preferred pronouns?"
+        "Halt! State your pronouns!"
         
         "They/them":
             $ player_pronoun_subject = "they"
             $ player_pronoun_object = "them"
             $ player_pronoun_possessive = "their"
             $ player_pronoun_verb = "are"
+            $ player_pronoun_cap_subject = "They"
+            $ player_pronoun_cap_object = "Them"
+            $ player_pronoun_cap_possessive = "Their"
         "He/him":
             $ player_pronoun_subject = "he"
             $ player_pronoun_object = "him"
             $ player_pronoun_possessive = "his"
             $ player_pronoun_verb = "is"
+            $ player_pronoun_cap_subject = "He"
+            $ player_pronoun_cap_object = "Him"
+            $ player_pronoun_cap_possessive = "His"
         "She/her":
             $ player_pronoun_subject = "she"
             $ player_pronoun_object = "her"
             $ player_pronoun_possessive = "her"
             $ player_pronoun_verb = "is"
+            $ player_pronoun_cap_subject = "She"
+            $ player_pronoun_cap_object = "Her"
+            $ player_pronoun_cap_possessive = "Her"
     
-    "[player_pronoun_subject] went to the supermarket."
-    "That was not very nice of [player_pronoun_object]."
-    "This is [player_pronoun_possessive] pineapple."
-    "[player_pronoun_subject] [player_pronoun_verb] in quarantine until Christmas."
+    "Oh."
+    "Effrafax of Wug, is that you?"
+    
+    menu:
+        "It's hard to see in the dark."
+        
+        "Surely the helmet is not helping, Captain Sir.":
+            "What? My helmet is fine! Show some respect!"
+        "It sure is, Captain Sir!":
+            "Show some respec— oh. Yes. Yes, it is."
     
     return
 
