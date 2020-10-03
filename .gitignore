@@ -13,3 +13,4 @@ game/*.png
 game/*.mp3
 game/*.ogg
 game/cache/*.rpyb
+*.txt
