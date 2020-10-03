@@ -22,12 +22,13 @@ default player_pronoun_cap_possessive = "Their"
 
 default day_index = 0
 
-image eggs = "eggs.png"
+image mom = "chicken.png"
 image shit = "shit.png"
 image sir = "sir.png"
+image hair = "hair.png"
 
 label start:
-    call l_set_pronouns
+    call l_intro
     
     #jump l_loop
     
@@ -62,11 +63,20 @@ label l_loop_evening:
     "It is evening"
     return
 
-label l_set_pronouns:
-    show sir at left
+label l_intro:
+    
+    $ renpy.pause(3)
+    
+    show sir at left with vpunch
+    
+    "HALT!"
+    
+    
+    
+    
     
     menu:
-        "Halt! State your pronouns!"
+        "State your pronouns!"
         
         "They/them":
             $ player_pronoun_subject = "they"
