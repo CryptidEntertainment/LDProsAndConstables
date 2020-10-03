@@ -1,0 +1,15 @@
+*.txt
+tmp/
+cache/*.rpyb
+game/*.bak
+game/*.rpyb
+game/*.rpyc
+game/saves/
+game/assets/
+game/*.ico
+game/*.jpg
+game/*.jpeg
+game/*.png
+game/*.mp3
+game/*.ogg
+game/cache/*.rpyb
