@@ -26,6 +26,7 @@ image mom = "chicken.png"
 image shit = "shit.png"
 image sir = "sir.png"
 image hair = "hair.png"
+image urchin = "derp.png"
 
 label start:
     call l_intro
