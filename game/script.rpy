@@ -206,23 +206,23 @@ label l_cycle:
     "Let's see what happens today..."
     
     if scenes[day_index] == 0:
-        jump l_scene_change
+        call l_scene_change
     elif scenes[day_index] == 1:
-        jump l_scene_drunk
+        call l_scene_drunk
     elif scenes[day_index] == 2:
-        jump l_scene_drunk_nuisance
+        call l_scene_drunk_nuisance
     elif scenes[day_index] == 3:
-        jump l_scene_fight
+        call l_scene_fight
     elif scenes[day_index] == 1:
-        jump l_scene_murder
+        call l_scene_murder
     elif scenes[day_index] == 5:
-        jump l_scene_mushrooms
+        call l_scene_mushrooms
     elif scenes[day_index] == 6:
-        jump l_scene_pickpocket
+        call l_scene_pickpocket
     elif scenes[day_index] == 7:
-        jump l_scene_swindle
+        call l_scene_swindle
     elif scenes[day_index] == 8:
-        jump l_scene_chicken
+        call l_scene_chicken
     
     #call l_morning
     
@@ -676,7 +676,7 @@ label l_scene_drunk_nuisance:
     dave "Now hold, fellow friends, now who approaches our little gathering? Behold this [player_pronoun_informal], all dressed up in crimson and gold!"
     "He parts the gathering and points directly at me."
     dave "Pray tell, whomst art thou?"
-    "you I'm a City Constable, friend. I just wanted all of you to-"
+    you "I'm a City Constable, friend. I just wanted all of you to-"
     dave "Constable? More like THINE MOMSTABLE! They allow anyone to be a guard these days, doth they not?"
     "The commoners chortle at the insult."
     you "You've got a lot of ale out in public, Dave. You know it's illegal to be drunk in public during the day, right?"
