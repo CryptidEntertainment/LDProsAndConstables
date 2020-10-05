@@ -176,7 +176,7 @@ label l_intro:
     "It's morning..."
     
     show bg barracks with dissolve
-    play music "Normal2.mp3"
+    play music "audio/Normal2.mp3"
     
     "A year ago, I enlisted to join the City Constables. It was the day that I matured into a real adult: my 16th birthday."
     "But I've been stagnating. Doing the same thing every single day, from wake to sleep, day in, day out."
@@ -234,7 +234,7 @@ label l_cycle:
         call l_scene_drunk_nuisance
     elif scenes[day_index] == 3:
         call l_scene_fight
-    elif scenes[day_index] == 1:
+    elif scenes[day_index] == 4:
         call l_scene_murder
     elif scenes[day_index] == 5:
         call l_scene_mushrooms
@@ -286,7 +286,7 @@ label l_cycle:
 
 label l_scene_pickpocket:
     show bg mainstreet with dissolve
-    play music "Confrontation.mp3"
+    play music "audio/Confrontation.mp3"
     
     "I'm crossing a street when a certain person moving in the crowd catches my eye with the way they're moving."
     
@@ -391,7 +391,7 @@ label l_scene_pickpocket:
 label l_scene_swindle:
     
     show bg market with dissolve
-    play music "Normal1.mp3"
+    play music "audio/Normal1.mp3"
     
     "I'm walking through a market when..."
     unknown "My my, what a gorgeous selection you have here!"
@@ -465,7 +465,7 @@ label l_scene_swindle:
 label l_scene_mushrooms:
     
     show bg market with dissolve
-    play music "Normal.mp3"
+    play music "audio/Normal1.mp3"
     
     "As I'm walking through the marketplace, I hear a voice begin shouting excitedly over all of the others. I walk over to the commotion."
     
@@ -541,7 +541,7 @@ label l_scene_mushrooms:
 label l_scene_murder:
     
     show bg mainstreet with dissolve
-    play music "Confrontation.mp3"
+    play music "audio/Confrontation.mp3"
     
     "I'm stationed at a gate when..."
     woman3 "EEEEIIIIIIAAAAAAAAA!!!!!!"
@@ -609,7 +609,7 @@ label l_scene_murder:
 
 label l_scene_fight:
     show bg market with dissolve
-    play music "Confrontation.mp3"
+    play music "audio/Confrontation.mp3"
     
     "I'm walking through a crowded district when..."
     unknown "Argh!"
@@ -744,7 +744,7 @@ label l_scene_fight:
 
 label l_scene_change:
     show bg alley with dissolve
-    play music "Normal2.mp3"
+    play music "audio/Normal2.mp3"
     
     "I'm on patrol when..."
     child "Hey Mister, hey Mister!"
@@ -793,7 +793,7 @@ label l_scene_change:
 label l_scene_chicken:
     
     show bg market with dissolve
-    play music "Normal3.mp3"
+    play music "audio/Normal3.mp3"
                 
     "I'm put on duty guarding the jail, when..."
     unknown "Guards, guards!"
@@ -858,7 +858,7 @@ label l_scene_chicken:
 
 label l_scene_drunk:
     show bg alley with dissolve
-    play music "Normal1.mp3"
+    play music "audio/Normal1.mp3"
     "While I'm on patrol..."
     drunk_unknown "Oya there, *hic*"
     show drunkard at center with dissolve
@@ -902,7 +902,7 @@ label l_scene_drunk:
 label l_scene_drunk_nuisance:
     
     show bg alley with dissolve
-    play music "Normal3.mp3"
+    play music "audio/Normal3.mp3"
     
     "I hear drunken shouting and cheering. Rounding a corner to find it, I see a small gathering of peasants."
     "Each of their faces are rosy, and most of them have spills on their shirts. The smell of alcohol fills my nostrils."
