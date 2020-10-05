@@ -65,7 +65,7 @@ default DAYS_TOTAL = 6
 label start:
     $ renpy.random.shuffle(scenes)
     
-    call l_intro
+    call l_intro from _call_l_intro
     
     return
 
@@ -227,23 +227,23 @@ label l_cycle:
     "Let's see what happens today..."
     
     if scenes[day_index] == 0:
-        call l_scene_change
+        call l_scene_change from _call_l_scene_change
     elif scenes[day_index] == 1:
-        call l_scene_drunk
+        call l_scene_drunk from _call_l_scene_drunk
     elif scenes[day_index] == 2:
-        call l_scene_drunk_nuisance
+        call l_scene_drunk_nuisance from _call_l_scene_drunk_nuisance
     elif scenes[day_index] == 3:
-        call l_scene_fight
+        call l_scene_fight from _call_l_scene_fight
     elif scenes[day_index] == 4:
-        call l_scene_murder
+        call l_scene_murder from _call_l_scene_murder
     elif scenes[day_index] == 5:
-        call l_scene_mushrooms
+        call l_scene_mushrooms from _call_l_scene_mushrooms
     elif scenes[day_index] == 6:
-        call l_scene_pickpocket
+        call l_scene_pickpocket from _call_l_scene_pickpocket
     elif scenes[day_index] == 7:
-        call l_scene_swindle
+        call l_scene_swindle from _call_l_scene_swindle
     elif scenes[day_index] == 8:
-        call l_scene_chicken
+        call l_scene_chicken from _call_l_scene_chicken
     
     #call l_morning
     
@@ -276,11 +276,11 @@ label l_cycle:
         jump l_cycle
     
     if status_rogue > status_requirement:
-        call l_ending_heist
+        call l_ending_heist from _call_l_ending_heist
     elif status_guard > status_requirement:
-        call l_ending_guard
+        call l_ending_guard from _call_l_ending_guard
     else:
-        call l_ending_neutral
+        call l_ending_neutral from _call_l_ending_neutral
     
     return
 
