@@ -682,7 +682,7 @@ label l_scene_drunk:
     "While I'm on patrol..."
     drunk_unknown "Oya there, *hic*"
     "I turn and find a clearly drunk man approaching."
-    drunk "How's its all shaking, (Sonny, Lassy, Yous)?"
+    drunk "How's its all shaking, [player_pronoun_informal]?"
     "I sigh."
     
     menu:
