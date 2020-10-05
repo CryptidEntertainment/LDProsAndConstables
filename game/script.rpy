@@ -1,11 +1,16 @@
 ﻿define cap = Character("Captain Louis Sirr")
 # just in case
 define cap_unknown = Character("Captain Louis Sirr")
+define con_unknown = Character("Merchant")
+define con = Character("Magic Mushrooms Merchant")
+define guard = Character("Guard")
 define merchant = Character("Merchant")
+define peasant = Character("Peasant")
 define thief = Character("Thief")
 define unknown = Character("???")
 define woman = Character("Woman")
 define woman2 = Character("Woman")
+define woman3 = Character("Woman")
 define you = Character("You")
 
 default status_urchin = 0
@@ -177,30 +182,30 @@ label l_cycle:
         "Grab your mace and get out there":
             pass
 
-    call l_morning
+    #call l_morning
     
-    "A couple hours pass, and the sun is a little bit past overhead now. It beats warmly down on my tabard."
-    "I can hear the sound of chainmail approaching me. The next Constable should be coming for the afternoon shift."
-    "He give me a quick nod as he reaches me, and I take off to go to my afternoon assignment."
-    "The sounds of profit - that is, shouting and announcements and haggling - get louder as I approach the marketplace."
-    "I hope to myself that nothing terrible happens today."
-    "Something always happens, but I just hope it isn't too bad."
+    #"A couple hours pass, and the sun is a little bit past overhead now. It beats warmly down on my tabard."
+    #"I can hear the sound of chainmail approaching me. The next Constable should be coming for the afternoon shift."
+    #"He give me a quick nod as he reaches me, and I take off to go to my afternoon assignment."
+    #"The sounds of profit - that is, shouting and announcements and haggling - get louder as I approach the marketplace."
+    #"I hope to myself that nothing terrible happens today."
+    #"Something always happens, but I just hope it isn't too bad."
     
-    call l_afternoon
+    #call l_afternoon
     
-    "The air begins to cool again as the sky darkens. My shift should be over about now."
-    "Time to report to Captain Sirr about the day."
-    "I walk back into the barracks, and find the Captain in his quarters."
-    "Captain Sirr: You're back safe and sound. What happened today?"
+    #"The air begins to cool again as the sky darkens. My shift should be over about now."
+    #"Time to report to Captain Sirr about the day."
+    #"I walk back into the barracks, and find the Captain in his quarters."
+    #"Captain Sirr: You're back safe and sound. What happened today?"
     
-    call l_night
+    #call l_night
     
-    "The air begins to cool again as the sky darkens. My shift should be over about now."
-    "I sigh, and head back to the barracks."
-    "And I do the same thing as I do, every night - take off my armor, hang up my tabard, and take out the oil and rag to clean them."
-    "My equipment is dusty. Walking the dirt roads all day will do that to them."
-    "After a while of polishing and cleaning, it's time to sleep. I lie down on my cot, and pull the woolen blanket over me."
-    "Eventually, my eyes turn heavy and the room goes dark."
+    #"The air begins to cool again as the sky darkens. My shift should be over about now."
+    #"I sigh, and head back to the barracks."
+    #"And I do the same thing as I do, every night - take off my armor, hang up my tabard, and take out the oil and rag to clean them."
+    #"My equipment is dusty. Walking the dirt roads all day will do that to them."
+    #"After a while of polishing and cleaning, it's time to sleep. I lie down on my cot, and pull the woolen blanket over me."
+    #"Eventually, my eyes turn heavy and the room goes dark."
     
     $ day_index += 1
     
@@ -233,7 +238,7 @@ label l_night:
     "Night"
     return
 
-label l_pickpocket:
+label l_scene_pickpocket:
     "I'm crossing a street when a certain person moving in the crowd catches my eye with the way they're moving."
     "I watch close. He moves up behind a woman, then rushes forward, jostling past her and using the distraction to cut away her coin purse."
     
@@ -295,7 +300,7 @@ label l_pickpocket:
 
     return
 
-label l_swindle:
+label l_scene_swindle:
     "I'm walking through a market when..."
     unknown "My my, what a gorgeous selection you have here!"
     "I turn to the loud praise and watch."
@@ -351,4 +356,98 @@ label l_swindle:
         "Let it go":
             you "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
             "With a shrug of my shoulders, I leave the foolish merchant to his fate and return to my patrol."
+    return
+
+label l_scene_mushrooms:
+    "As I’m walking through the marketplace, I hear a voice begin shouting excitedly over all of the others. I walk over to the commotion."
+    con "Buy Arcane Mushrooms today! They’ll solve any problem, guaranteed! Buy 'em today!"
+    "I don’t recognise this merchant… and what the hell is it that he’s peddling?"
+    "A small crowd has already gathered around this man."
+    
+    menu:
+        "Should I do something about it?"
+        
+        "Approach":
+            you "Move aside, move aside, constable coming through."
+            "I should at least figure out what’s going on. I make my way past a couple people and walk up to the merchant."
+            "There are many types of mushrooms on his stand, all shapes and sizes and colors."
+            "He’s smiling. He almost seems too happy to see me walking up to his stand."
+            you "I don’t think I’ve even seen you around before. You new in this market?"
+            con "Why yes, because I’m a travelling merchant! I started my mushrooming journey a few years ago, all the way back in the land of—"
+            you "I don’t need to hear your life’s story. Tell me more about what you’re selling."
+            con "Why, they’re Arcane Mushrooms! They’ll fix any and every problem in your life! There’s a mushroom for every occasion, and they’re simply magical!"
+            "I don’t know how much I trust this man, and I know nothing about his product."
+            
+            menu:
+                "What's the logical course of action?"
+                
+                "Question him further":
+                    you "Tell me more about what these mushrooms can specifically do."
+                    con "Why, they alleviate headaches and stomachaches and can cure any sickness or physical ill!"
+                    con "They can bulk up your muscles, make you more flexible, or make you think twice as fast as you do right now!"
+                    you "How do you know that they work? Have you eaten all of these before?"
+                    "A bead of sweat begins to drip down the merchant’s forehead."
+                    con "Why, well the phrase amongst us dealers is to not get hi- I mean, don’t deny your whole supply to your customers!"
+                    con "I’d lose a lot of profit if I did that! Imagine if a butcher ate half of every steak that he had to peddle."
+                    you "Certainly they’re all safe to eat, right?"
+                    con "Of course they’re all safe! I’ve been selling them for years without incident!"
+                    con "Not a single soul has ever died because of my mushrooms and come to me complaining about it."
+                    "Something feels very suspicious about this man and the way he answers my questions."
+                    
+                    menu:
+                        "What should I do about this?"
+                        
+                        "Kick him out of town":
+                            "I can’t just let this man scam our village out of money and possibly poison our peasantry."
+                            you "Alright. Here’s what’s going to happen. You’re going to pack up your little stand here, and keep moving to another town."
+                            con "What? Why! I haven’t done anything wrong!"
+                            peasant "Oi, wait, I din’t get to buy any anyfin’ yet!"
+        "Bring up the issue to the Captain":
+            pass
+        "Let the man sell his goods":
+            pass
+    return
+
+label l_scene_murder:
+    "I’m stationed at a gate when…"
+    woman3 "EEEEIIIIIIAAAAAAAAA!!!!!!"
+    "Everyone jumps at the piercing scream."
+    guard "That was really close."
+    
+    menu:
+        "Do you go to investigate?"
+            "I should check that out!":
+                guard "Wait! Leave it for the patrols."
+                you "We’re the closest, and it sounded bad!"
+                "Before anyone can argue further, I rush away from the gate, toward the sound of the scream."
+                "It’s just a couple blocks, and I’m there in no time."
+                you "Oh, shit!"
+                "As soon as the scene comes into sight, my blood runs cold."
+                "There are a few people scattered about watching, and a woman collapsing, a pool of deep red blood already forming beneath her."
+                "I barely spot the glint of metal and the flick of blood as the perpetrator flees, turning a corner and disappearing."
+                you "Guard! Move aside!"
+                "My voice clears the crowd so I can slide to the woman’s side. One look shows she’s been stabbed badly in the stomach."
+                "One hand immediately applies pressure to the wound while I dig through my gear with the other for my medical supplies."
+                woman3 "Why? I didn’t… I didn’t do anything wrong…"
+                you "Don’t speak, just stay still. I’m here to help."
+                "She goes quiet, her eyes slowly losing focus."
+                "I pull out some supplies. They’re not much, but it’ll help. It’s hard to say for sure, but I think I’ve seen enough wounds to know that a stab in this spot won’t hit anything vital."
+                "Besides the severe bleeding, I don’t see any other signs of organ damage, or so I hope. As fast as I can, I use my supplies to treat the wound, then bandage it as well as I can."
+                you "Don’t worry, you’ll be alright. Everything will be fine..."
+                "I keep talking to her as I work, even though she’s slowly losing consciousness from the blood loss."
+                "Then I finish. It looks like I’ve stopped most of the immediate bleeding, but her eyes are barely open anymore, and her head lolls limply to the side."
+                you "I hope you make it…"
+                guard "Guards coming through!"
+                "I stand to meet the approaching guards."
+                guard "What are you doing here?"
+                you "I was closest to the scene, over at the gate. I treated her wounds, but she still needs real medical attention."
+                "The guards all inspect the half-conscious woman uncertainly."
+                guard "Sure… We’ll deal with it from here, get back to your post!"
+                you "Of course."
+                "With a quick salute, I leave the scene to the patrol guards. I know I shouldn’t have abandoned my post, but that woman would have died if I hadn’t gotten there as soon as I did."
+                "Thinking that, I return to my post."
+            "I have to stay at my post"
+                you "We have to stay here. This is our post."
+                guard "Obviously. Let the patrol guards deal with it."
+                "We all nod, and continue manning the gate."
     return
