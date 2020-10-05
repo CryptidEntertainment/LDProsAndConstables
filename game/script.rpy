@@ -28,6 +28,7 @@ default status_merchant = 0
 
 default status_rogue = 0
 default status_guard = 0
+default status_requirement = 4
 
 default player_pronoun_subject = "they"
 default player_pronoun_object = "them"
@@ -199,6 +200,7 @@ label l_cycle:
     "It's the crack of dawn, and the sun has begun rising."
     "Today is [day_index_name], with [day_index_sub] days until the end of the week."
     "Time to don my chainmail and get ready for work."
+    
     menu:
         "Grab your mace and get out there":
             pass
@@ -256,6 +258,13 @@ label l_cycle:
     
     if day_index < DAYS_TOTAL:
         jump l_cycle
+    
+    if status_rogue > status_requirement:
+        call l_ending_heist
+    elif status_guard > status_requirement:
+        call l_ending_guard
+    else:
+        call l_ending_neutral
     
     return
 
