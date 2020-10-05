@@ -39,7 +39,6 @@ default player_pronoun_honorific = "Overlord"
 default day_index = 0
 default day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 default scenes = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-renpy.random.shuffle(scenes)
 
 image mom = "chicken.png"
 image shit = "shit.png"
@@ -53,6 +52,8 @@ default THIEVES_GUILD = "[THE THIEVES' GUILD]"
 default DAYS_TOTAL = 6
 
 label start:
+    $ renpy.random.shuffle(scenes)
+    
     call l_intro
     
     return
@@ -433,40 +434,41 @@ label l_scene_murder:
     
     menu:
         "Do you go to investigate?"
-            "I should check that out!":
-                guard "Wait! Leave it for the patrols."
-                you "We're the closest, and it sounded bad!"
-                "Before anyone can argue further, I rush away from the gate, toward the sound of the scream."
-                "It's just a couple blocks, and I'm there in no time."
-                you "Oh, shit!"
-                "As soon as the scene comes into sight, my blood runs cold."
-                "There are a few people scattered about watching, and a woman collapsing, a pool of deep red blood already forming beneath her."
-                "I barely spot the glint of metal and the flick of blood as the perpetrator flees, turning a corner and disappearing."
-                you "Guard! Move aside!"
-                "My voice clears the crowd so I can slide to the woman's side. One look shows she's been stabbed badly in the stomach."
-                "One hand immediately applies pressure to the wound while I dig through my gear with the other for my medical supplies."
-                woman3 "Why? I didn't... I didn't do anything wrong..."
-                you "Don't speak, just stay still. I'm here to help."
-                "She goes quiet, her eyes slowly losing focus."
-                "I pull out some supplies. They're not much, but it'll help. It's hard to say for sure, but I think I've seen enough wounds to know that a stab in this spot won't hit anything vital."
-                "Besides the severe bleeding, I don't see any other signs of organ damage, or so I hope. As fast as I can, I use my supplies to treat the wound, then bandage it as well as I can."
-                you "Don't worry, you'll be alright. Everything will be fine..."
-                "I keep talking to her as I work, even though she's slowly losing consciousness from the blood loss."
-                "Then I finish. It looks like I've stopped most of the immediate bleeding, but her eyes are barely open anymore, and her head lolls limply to the side."
-                you "I hope you make it..."
-                guard "Guards coming through!"
-                "I stand to meet the approaching guards."
-                guard "What are you doing here?"
-                you "I was closest to the scene, over at the gate. I treated her wounds, but she still needs real medical attention."
-                "The guards all inspect the half-conscious woman uncertainly."
-                guard "Sure... We'll deal with it from here, get back to your post!"
-                you "Of course."
-                "With a quick salute, I leave the scene to the patrol guards. I know I shouldn't have abandoned my post, but that woman would have died if I hadn't gotten there as soon as I did."
-                "Thinking that, I return to my post."
-            "I have to stay at my post"
-                you "We have to stay here. This is our post."
-                guard "Obviously. Let the patrol guards deal with it."
-                "We all nod, and continue manning the gate."
+        
+        "I should check that out!":
+            guard "Wait! Leave it for the patrols."
+            you "We're the closest, and it sounded bad!"
+            "Before anyone can argue further, I rush away from the gate, toward the sound of the scream."
+            "It's just a couple blocks, and I'm there in no time."
+            you "Oh, shit!"
+            "As soon as the scene comes into sight, my blood runs cold."
+            "There are a few people scattered about watching, and a woman collapsing, a pool of deep red blood already forming beneath her."
+            "I barely spot the glint of metal and the flick of blood as the perpetrator flees, turning a corner and disappearing."
+            you "Guard! Move aside!"
+            "My voice clears the crowd so I can slide to the woman's side. One look shows she's been stabbed badly in the stomach."
+            "One hand immediately applies pressure to the wound while I dig through my gear with the other for my medical supplies."
+            woman3 "Why? I didn't... I didn't do anything wrong..."
+            you "Don't speak, just stay still. I'm here to help."
+            "She goes quiet, her eyes slowly losing focus."
+            "I pull out some supplies. They're not much, but it'll help. It's hard to say for sure, but I think I've seen enough wounds to know that a stab in this spot won't hit anything vital."
+            "Besides the severe bleeding, I don't see any other signs of organ damage, or so I hope. As fast as I can, I use my supplies to treat the wound, then bandage it as well as I can."
+            you "Don't worry, you'll be alright. Everything will be fine..."
+            "I keep talking to her as I work, even though she's slowly losing consciousness from the blood loss."
+            "Then I finish. It looks like I've stopped most of the immediate bleeding, but her eyes are barely open anymore, and her head lolls limply to the side."
+            you "I hope you make it..."
+            guard "Guards coming through!"
+            "I stand to meet the approaching guards."
+            guard "What are you doing here?"
+            you "I was closest to the scene, over at the gate. I treated her wounds, but she still needs real medical attention."
+            "The guards all inspect the half-conscious woman uncertainly."
+            guard "Sure... We'll deal with it from here, get back to your post!"
+            you "Of course."
+            "With a quick salute, I leave the scene to the patrol guards. I know I shouldn't have abandoned my post, but that woman would have died if I hadn't gotten there as soon as I did."
+            "Thinking that, I return to my post."
+        "I have to stay at my post":
+            you "We have to stay here. This is our post."
+            guard "Obviously. Let the patrol guards deal with it."
+            "We all nod, and continue manning the gate."
     return
 
 label l_scene_fight:
