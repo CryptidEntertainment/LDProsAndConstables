@@ -35,7 +35,7 @@ default player_pronoun_cap_object = "Them"
 default player_pronoun_cap_possessive = "Their"
 
 default day_index = 0
-default day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+default day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 image mom = "chicken.png"
 image shit = "shit.png"
@@ -46,6 +46,7 @@ image merchant = "hat.png"
 image drunkard = "beer.png"
 
 default THIEVES_GUILD = "[THE THIEVES' GUILD]"
+default DAYS_TOTAL = 6
 
 label start:
     call l_intro
@@ -178,7 +179,7 @@ label l_intro:
     return
 
 label l_cycle:
-    $ day_index_sub = 5 - day_index
+    $ day_index_sub = DAYS_TOTAL - day_index
     $ day_index_name = day_names[day_index]
     
     "It's the crack of dawn, and the sun has begun rising."
@@ -215,7 +216,7 @@ label l_cycle:
     
     $ day_index += 1
     
-    if day_index < 5:
+    if day_index < DAYS_TOTAL:
         jump l_cycle
     
     return
@@ -651,7 +652,7 @@ label l_scene_drunk:
             you "Off with you now!"
             "I shoo him away. He grouches at me, but staggers off."
             "I roll my eyes, and return to my patrol."
-return
+    return
 
 label l_scene_drunk_nuisance:
     "I hear drunken shouting and cheering. Rounding a corner to find it, I see a small gathering of peasants."
