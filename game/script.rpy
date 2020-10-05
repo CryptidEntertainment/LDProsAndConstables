@@ -770,3 +770,73 @@ label l_scene_drunk_nuisance:
             return
     
     return
+
+label l_ending_neutral:
+    "Today has been quiet. That's nice."
+    "Well, it's also a little bit unsettling."
+    "The hours pass by, uneventfully."
+    "The sun makes its way overhead, and moves through the sky until it begins to set again."
+    "It's the end of my shift, now."
+    "I'm still not that happy with my job as a City Constable... and it is the end of the week..."
+    "I guess I'm quitting today."
+    "What do I do with my life now?"
+    "I still don't even know how to bake."
+    "..."
+    "...shit."
+return
+
+label l_ending_guard:
+    "A voice calls out to me before I get to the door."
+    "I turn around and the Guard Captain is facing me."
+    you "Yes sir! What do you need, sir?"
+    cap "You know, you've been a part of the Constables for about a year now. A lot of people don't make it this far."
+    cap "You've been doing well as one of our own, and have been dealing with the common rabble well in recent times."
+    you "Thank you, sir!"
+    cap "It's evident to me, due to your hard work, that you're going to serve us well for a long time. "
+    cap "Therefore, you are getting a promotion. Come with me to my quarters, and we'll discuss your new workload."
+    "Is this really happening? "
+    "I... I'm getting recognition for the work I'm doing here! "
+    "Life is finally going to change!"
+    "I wonder what's going to happen next after this? "
+    "I guess I'll just have to find out..."
+    "..."
+    "I would have made a really shitty baker."
+    return
+
+label l_ending_heist:
+    "The air begins to cool again as the sky darkens. My shift should be over about now."
+    "I sigh, and head back to the barracks."
+    "And I do the same thing as I do, every night-  take off my armor, hang up my tabard, and take out the oil and rag to clean them."
+    "My equipment is dusty. Walking the dirt roads all day will do that to them."
+    "After a while of polishing and cleaning, it's time to sleep. I lie down on my cot, and pull the woolen blanket over me."
+    "But I stay awake, until I hear the snoring of all of the other guards."
+    "I slowly get out of bed, and walk over to the room where excess equipment is stored."
+    "No one will notice a couple maces and short swords missing in the morning, will they?"
+    "I wrap them in a dark-grey cloth, and store them in the bushes outside."
+    "My new friends should be retrieving them shortly. But now, sleep."
+    "I return to the cot, and cover myself once more. "
+    "Eventually, my eyes turn heavy and the room goes dark."
+    
+    # <transition to morning>
+    
+    "It's the crack of dawn, and the sun has begun rising."
+    "Today is Sunday, the morning of the coup."
+    "Time to don my chainmail and get ready for \"work,\" heh heh."
+    
+    menu:
+        "Grab your mace and get out there"
+return
+
+label l_ending_fail:
+    "Today is Sunday, my last day of being a City Constable."
+    "Time to don my chainmail and get ready for work."
+    "Grab your mace and get out there"
+    you "Wait, where is my mace? I thought I left it in the stand next to my armor, like I always do..."
+    you "I'll just grab another one from storage. No one will notice, right?"
+    "I open the wooden door to where we stored unused weapons. However, there were no maces in there, like there usually were. Odd."
+    you "And where are Goyl and Krab? I was going to ask them about this issue. They usually wake up after me, but..."
+    "Suddenly the door to the barracks opens up. I see a familiar face (the thief), and half a dozen more people behind him."
+    "All of them wield maces and short swords."
+    "Thief: Surprise! Remember me?"
+    "...Shit."
+    return
