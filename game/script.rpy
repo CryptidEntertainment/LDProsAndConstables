@@ -1,9 +1,14 @@
 ﻿define cap = Character("Captain Louis Sirr")
 # just in case
 define cap_unknown = Character("Captain Louis Sirr")
+define child = Character("Child")
 define con_unknown = Character("Merchant")
 define con = Character("Magic Mushrooms Merchant")
+define dave = Character("Dave")
+define drunk_unknown = Character("???")
+define drunk = Character("Drunk")
 define guard = Character("Guard")
+define man = Character("Man")
 define merchant = Character("Merchant")
 define peasant = Character("Peasant")
 define thief = Character("Thief")
@@ -11,6 +16,7 @@ define unknown = Character("???")
 define woman = Character("Woman")
 define woman2 = Character("Woman")
 define woman3 = Character("Woman")
+define woman4 = Character("Woman")
 define you = Character("You")
 
 default status_urchin = 0
@@ -556,5 +562,144 @@ label l_scene_fight:
             "I return to the spot where the unconscious man was, but he's gone when I arrive."
             you "Gone, huh... Whatever."
             "Shrugging, I return to my patrol."
+    return
+
+label l_scene_change:
+    "I'm on patrol when..."
+    child "Hey Mister, hey Mister!"
+    "A small street child runs up to me, grabbing my leg."
+    child "Could you spare some change?"
     
+    menu:
+        "Can I do that?"
+        
+        "Refuse":
+            you "Ugh, off me!"
+            "I shake him off, scowling."
+            you "Scram! Get out of here before I arrest you for disturbing the peace."
+            child "Eep!"
+            "He dashes away into the crowd."
+            "I sigh, shaking my head, and return to my patrol."
+        
+        "Give him something":
+            you "Sure, why not?"
+            "I flip him a coin."
+            child "Thanks a lot, Mister!"
+            "With a smile on his face, he dashes away into the crowd."
+            "I return to my patrol."
+    return
+
+label l_chicken:
+    "I'm put on duty guarding the jail, when..."
+    unknown "Guards, guards!"
+    "An exhausted looking woman runs up to me."
+    woman "Please, please come help!"
+    you "I could, but I'd be leaving my post."
+    
+    menu:
+        "This could be a distraction..."
+        
+        "She needs help!":
+            you "Of course!"
+            "I dash after the woman as she runs away. We go a few blocks, arriving in front of a tree."
+            woman4 "There, my baby is up there!"
+            "She points up the tree and..."
+            you "Is that a chicken?"
+            "Up in the tree, there's a chicken, seemingly stuck."
+            "All the tension about the woman who seemed to need help vanishes."
+            you "Well, I'm already here..."
+            "Thinking as much, I climb up into the branches and grab the chicken. It struggles a little, but I manage to get back down without too much trouble."
+            you "Here's your... bird, ma'am."
+            woman4 "Oh, thank you! Thank you so much."
+            "Hugging the animal to her chest, she runs off."
+            "Shaking my head, I return to my post."
+        
+        "This must be a distraction":
+            you "Sorry ma'am, I can't leave my post."
+            "I try not to show my skepticism in my response. If she's just a distraction, she's failed."
+            "Without delay, she turns away and runs off."
+            woman4 "Help, someone please help!"
+            "Her shouts disappear into the street."
+            "you I wonder if she really needs help with something...?"
+            "Shrugging, I continue to stand guard."
+    return
+
+label l_scene_drunk:
+    "While I'm on patrol..."
+    drunk_unknown "Oya there, *hic*"
+    "I turn and find a clearly drunk man approaching."
+    drunk "How's its all shaking, (Sonny, Lassy, Yous)?"
+    "I sigh."
+    
+    menu:
+        "..."
+        
+        "Talk to him":
+            you "What is it, old man?"
+            drunk "Haha! Just a lookin a talka bit!"
+            you "What about?"
+            drunk "Oh, you know, *hic* life an' all da stuff whereabouts ya getting by..."
+            "Grinning faintly at the man, I listen to him ramble for a bit. He doesn't get anywhere but he does vaguely recall a couple amusing stories before I give him a pat on the shoulder."
+            you "Well, I have a patrol to return to, Have a nice day, sir."
+            drunk "Youz too, (Mister, Miss, Yousa) constable, (Sir,/Ma'am,/Ya) haha."
+            "He throws a drunken salute, as he staggers away."
+            "I chuckle a bit, and return to my patrol."
+        
+        "Send him away":
+            you "You're drunk, sir."
+            drunk "You sure? I don't *hic* feel drunk!"
+            you "Off with you now!"
+            "I shoo him away. He grouches at me, but staggers off."
+            "I roll my eyes, and return to my patrol."
+return
+
+label l_scene_drunk_nuisance:
+    "I hear drunken shouting and cheering. Rounding a corner to find it, I see a small gathering of peasants."
+    "Each of their faces are rosy, and most of them have spills on their shirts. The smell of alcohol fills my nostrils."
+    dave "Ha! And then the knave produced a dagger and advanced towards me, when I unsheathed mine rapier and laughed at him."
+    dave "And we had a good bout of banter! \"Thine sword's looking a little short, sir!\' "
+    dave "He replied \"Ha! Ye've got yerself a big ol' blade, ye compensatin' fer anyfin?\""
+    "By this time, I've walked all the way up to the group. I'm about to say something, when-"
+    dave "Now hold, fellow friends, now who approaches our little gathering? Behold this (man, woman, chap), all dressed up in crimson and gold!"
+    "He parts the gathering and points directly at me."
+    dave "Pray tell, whomst art thou?"
+    "you I'm a City Constable, friend. I just wanted all of you to-"
+    dave "Constable? More like THINE MOMSTABLE! They allow anyone to be a guard these days, doth they not?"
+    "The commoners chortle at the insult."
+    you "You've got a lot of ale out in public, Dave. You know it's illegal to be drunk in public during the day, right?"
+    "The clearly drunk peasants quiet up and look at Dave."
+    dave "Dearest constable, you bastard, certainly thou wouldst understand that these bottles of booze art for my family?"
+    dave "They are very thirsty, and I provide for them so they can drink."
+    "The peasantry holler and laugh at this."
+    
+    menu:
+        "Clearly, normal talk isn't going to work."
+        
+        "Insult him back":
+            "My face turns into a sour scowl. I am fed up with these idiots right now."
+            you "You're all in the wrong place, did you know?"
+            "Dave, the drunk, theatrically feigns terror, mocking my words."
+            dave "Oh, nay! Is the big, scary constable going to arrest all of us for jesting and being merry?"
+            you "Pfft. The dung-covered peasant convention already left town yesterday. You should catch up before they get a new main attraction."
+            dave "Oh, art thou mad, brother? A City Constable, resorting to mocking a drunk. Ha!"
+            dave "I was right! Thou art nothing but a bastard with a chain coating and bastard filling."
+            "The commoners continue shouting and I begin to feel my blood boil."
+            you "Dave! I-"
+            dave "Oh, feel not bad, Constable. Maybe thou just art not cut out to be... well, much of anything."
+            dave "Thy mind art as strong as thine body- not at all!"
+            "I've had enough. I have to get out of there before I do something to get me thrown into the jail cell."
+            dave "Pray tell, mine fellow in a tabard of red and gold, that thou had not filled thine pants with a similar gold?"
+            dave "Gaze upon the mighty Constable running away from some filthy peasants, retreating home to change his trousers!"
+            "The peasants roar with laughter as I storm away, their voices slowly fading down the street."
+        
+        "Assert yourself":
+            "I begin to shout and the inebriated idiots."
+            you "Listen up! All of you need to go home. You're causing a ruckus, and I don't want to have to drag any of you away. Understand?"
+            "The peasantry grumble, and some begin to pick up their stuff."
+            dave "Constable, certainly we have not-"
+            you "No, I'm not going to let you finish. Either you stop causing a scene in the street, or you-"
+            dave "Mine good fellows, don't get let your spirits fall. For we shall continue our festivities at my abode! Tally-ho!"
+            "The commoners cheer once more, as they stumble down the dirt paths out of the street."
+    
+    "Well, that takes care of that."
     return
