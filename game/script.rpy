@@ -1,6 +1,12 @@
 ﻿define cap = Character("Captain Louis Sirr")
 # just in case
 define cap_unknown = Character("Captain Louis Sirr")
+define merchant = Character("Merchant")
+define thief = Character("Thief")
+define unknown = Character("???")
+define woman = Character("Woman")
+define woman2 = Character("Woman")
+define you = Character("You")
 
 default status_urchin = 0
 default status_thief = 0
@@ -162,7 +168,7 @@ label l_cycle:
     $ day_index_sub = 5 - day_index
     $ day_index_name = day_names[day_index]
     
-    "It’s the crack of dawn, and the sun has begun rising."
+    "It's the crack of dawn, and the sun has begun rising."
     "Today is [day_index_name], with [day_index_sub] days until the end of the week."
     "Time to don my chainmail and get ready for work."
     menu:
@@ -176,14 +182,14 @@ label l_cycle:
     "He give me a quick nod as he reaches me, and I take off to go to my afternoon assignment."
     "The sounds of profit - that is, shouting and announcements and haggling - get louder as I approach the marketplace."
     "I hope to myself that nothing terrible happens today."
-    "Something always happens, but I just hope it isn’t too bad."
+    "Something always happens, but I just hope it isn't too bad."
     
     call l_afternoon
     
     "The air begins to cool again as the sky darkens. My shift should be over about now."
     "Time to report to Captain Sirr about the day."
     "I walk back into the barracks, and find the Captain in his quarters."
-    "Captain Sirr: You’re back safe and sound. What happened today?"
+    "Captain Sirr: You're back safe and sound. What happened today?"
     
     call l_night
     
@@ -191,7 +197,7 @@ label l_cycle:
     "I sigh, and head back to the barracks."
     "And I do the same thing as I do, every night - take off my armor, hang up my tabard, and take out the oil and rag to clean them."
     "My equipment is dusty. Walking the dirt roads all day will do that to them."
-    "After a while of polishing and cleaning, it’s time to sleep. I lie down on my cot, and pull the woolen blanket over me."
+    "After a while of polishing and cleaning, it's time to sleep. I lie down on my cot, and pull the woolen blanket over me."
     "Eventually, my eyes turn heavy and the room goes dark."
     
     $ day_index += 1
@@ -205,8 +211,16 @@ label l_morning:
     "The morning air is still cold when I leave the barracks. The morning dew wets my boots."
     "I walk through the dirt roads until I get to my assigned post."
     "The sun is just over the horizon, now, and my shift begins."
-    "Let’s see what happens today..."
-
+    "Let's see what happens today..."
+    
+    "PICKPOCKET"
+    
+    call l_pickpocket
+    
+    "SWINDLE"
+    
+    call l_swindle
+    
     return
 
 label l_afternoon:
@@ -215,4 +229,128 @@ label l_afternoon:
 
 label l_night:
     "Night"
+    return
+
+label l_pickpocket:
+    "I'm crossing a street when a certain person moving in the crowd catches my eye with the way they're moving."
+    "I watch close. He moves up behind a woman, then rushes forward, jostling past her and using the distraction to cut away her coin purse."
+    
+    menu:
+        "What should I do?"
+        
+        "Ignore it":
+            "Damn it, I really don't feel like dealing with thieves right now."
+            "Turning my back on the scene, I let it pass and continue my patrol."
+            
+            # Ignore it (Allied w/ Thieves)
+            
+            "Must be one of (thief organization player allied with?). Just let him pass..."
+            "Pretending not to notice, I continue my patrol."
+        
+        "Approach the man":
+            #(thief: oh, you're making a mistake)
+            "I give it some time, keeping my distance as I follow the thief. He's on guard for a minute before he calms down, and I'm able to get closer without him noticing."
+            "Moving in behind him, I keep quiet until I'm right on him, and grab his arm hard."
+            thief "What?!"
+            "He spins back. When he sees me, he struggles, but my grip is solid, he isn't getting away from me that easily."
+            "I saw you rob that woman."
+            "A grin breaks over his face, both mocking and worried at once."
+            thief "Yeah? And what're you gonna do about it?"
+            
+            menu:
+                "Good question."
+                
+                "Make him give the money back":
+                    "You're giving that money back, and then you're going to jail."
+                    "His grin widens."
+                    thief "How about option three?"
+                    "With his free hand, he tosses the coin purse up into the air."
+                    "Shit!"
+                    "I stagger backward, diving and falling flat on my back as I barely catch the bag to keep it from spilling its contents all over the ground."
+                    "Ugh. He got away."
+                    "By the time I've recovered and made it back to my feet, the thief is long gone."
+                    "At least I got the money back."
+                    "After backtracking to where the woman was pickpocketed, I have to search the nearby areas before I find her."
+                    "Excuse me, Miss."
+                    woman "Yes, constable?"
+                    "You were pickpocketed earlier. I recovered your coin purse for you."
+                    "As soon as I show her the bag, her hand goes to her waist, searching for the missing purse."
+                    woman "Oh, oh my! I didn't even..."
+                    woman "Thank you so much!"
+                    "Just doing my job."
+                    "I hand back her coin purse, and she quickly fastens it back in place, before seeing me off."
+                    "As I'm walking away, a random thought comes back to mind."
+                    "Did he say \"option three?\" I never gave him an option two..."
+                    "Shake my head, laughing a little to myself as I return to my patrol."
+                
+                "Don't bother":
+                    "Nothing."
+                    thief "Huh?"
+                    "I'm not going to do anything about it."
+                    "I crack a grin."
+                    "I'm going to let you go, and you’re going to remember it."
+                    "You're going to owe me one. Remember that."
+                    "The man’s expression turns sour."
+                    thief "Fair enough."
+                    "He shakes off my hand and this time, I let him go. He huffs indignantly, and slouches off down the street."
+                    "Grinning to myself a little, I return to my patrol."
+
+    return
+
+label l_swindle:
+    "I'm walking through a market when..."
+    unknown "My my, what a gorgeous selection you have here!"
+    "I turn to the loud praise and watch."
+    "A tall woman is leaning over the counter, with a merchant standing behind it, blushed red from ear to ear. The counter has treats, a mix of pastries, chocolates, and such, on display."
+    woman2 "I would ever so much love to purchase one of these. Like this..."
+    merchant "Th-that? Just five coppers..."
+    "Moving to a slightly different angle makes it clear that the cut of her blouse affords him quite a sight of the woman's cleavage."
+    "So it's like that..."
+    
+    menu:
+        "Poor guy. Should I do something about it?"
+        
+        "Approach":
+            "May as well."
+            woman2 "Oh that would be wonderful, just let me..."
+            "Ah, those do look nice."
+            "When I cut in, the woman immediately straightens up."
+            merchant "M-Miss?"
+            "The guy's eyes move between us."
+            "Oh my, it seems I forgot my coinpurse. I'll be going now. Tata."
+            "With a stiff wave of her fingers, she quickly heads off."
+            merchant "Haah... Good going, you scared off my customer."
+            "She just said she didn't have any money."
+            "He looks mildly displeased, but can't say anything in response."
+            "With a shrug and a wave, I return to my patrol."
+        
+        "Keep watching":
+            "Ehh, she's not doing anything illegal... yet..."
+            woman2 "Oh that would be wonderful, just let me... Oh my, it seems I forgot my coinpurse."
+            woman2 "Oh... W-well, maybe..."
+            "Looking very uncomfortable, the man flounders in front of the woman."
+            "If I'm going to step in, it has to be now..."
+            
+            menu:
+                "Well, do you?"
+                
+                "Approach":
+                    "I've seen enough."
+                    "Walking quickly forward, I thump a hand down on the woman's shoulder, and she shoots back upright instantly."
+                    "Miss, if you have no money to pay for things, I think it's best if you move along."
+                    woman2 "Of-of course, constable."
+                    "The woman flees quickly into the crowd."
+                    "Ehh, it's not like tricking the guy into giving her some chocolates is illegal, but still..."
+                    merchant "Aww..."
+                    "I eye him, and he looks disappointed by the woman's departure."
+                    "He hasn't even realized he was being swindled, has he?"
+                    "Have a nice day."
+                    "With a subtle shake of my head, I leave the foolish merchant behind, and return to my patrol."
+                "Let it go":
+                    "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
+                    "With a shrug of my shoulders, I leave the foolish merchant to his fate and return to my patrol."
+        
+        "Let it go":
+            "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
+            "With a shrug of my shoulders, I leave the foolish merchant to his fate and return to my patrol."
     return
