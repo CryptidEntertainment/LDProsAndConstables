@@ -504,42 +504,35 @@ label l_scene_mushrooms:
                     con "Of course they're all safe! I've been selling them for years without incident!"
                     con "Not a single soul has ever died because of my mushrooms and come to me complaining about it."
                     "Something feels very suspicious about this man and the way he answers my questions."
-                    "What should I do about this?"
+                    
+                    menu:
+                        "What should I do about this?"
+                        
                         "Stop him from selling anything":
-                    "I can’t just let this man scam our village out of money and possibly poison our peasantry."
-                    you "Alright. Here’s what’s going to happen. You’re going to pack up your little store, and stop selling your mushrooms here."
-                    con "What? Why! I haven’t done anything wrong!"
-                    "Some of the peasants begin walking away."
-                    con "My profits!"
-                    you "I suggest you make like the rest of the peasants before I have to take you away."
-                    "The merchant grumbles, but leaves the alleyway with his goods."
-                    "Alright. That took care of that."
-                    
-                "Stop him from selling anything":
-                    "I can’t just let this man scam our village out of money and possibly poison our peasantry."
-                    you "Alright. Here’s what’s going to happen. You’re going to pack up your little store, and stop selling your mushrooms here."
-                    con "What? Why! I haven’t done anything wrong!"
-                    "Some of the peasants begin walking away."
-                    con "My profits!"
-                    you "I suggest you make like the rest of the peasants before I have to take you away."
-                    "The merchant grumbles, but leaves the alleyway with his goods."
-                    "Alright. That took care of that."
-                    
-                    $ status_guard += 1
-                    return
-                "Let the man sell his goods":
-                    you "Just don’t poison anyone. If you do, I won’t be nearly as nice as I am right now."
-                    con "Oh, of course! I thank you for your generosity. Hope to see you again, Constable."
-                    "I exited the alleyway. Was that the right thing to do?"
-                    
-                    $ status_rogue += 1
-                    return
-	"Ignore":
-        "Well, none of them are getting hurt, and it doesn’t look like anyone’s complaining about buying what he’s selling."
-        "I guess I don’t really need to do anything about this."
-        
-        $ status_rogue += 1
-        return
+                            "I can’t just let this man scam our village out of money and possibly poison our peasantry."
+                            you "Alright. Here’s what’s going to happen. You’re going to pack up your little store, and stop selling your mushrooms here."
+                            con "What? Why! I haven’t done anything wrong!"
+                            "Some of the peasants begin walking away."
+                            con "My profits!"
+                            you "I suggest you make like the rest of the peasants before I have to take you away."
+                            "The merchant grumbles, but leaves the alleyway with his goods."
+                            "Alright. That took care of that."
+                            
+                            $ status_guard += 1
+                            return
+                        "Let the man sell his goods":
+                            you "Just don’t poison anyone. If you do, I won’t be nearly as nice as I am right now."
+                            con "Oh, of course! I thank you for your generosity. Hope to see you again, Constable."
+                            "I exited the alleyway. Was that the right thing to do?"
+                            
+                            $ status_rogue += 1
+                            return
+        "Ignore":
+            "Well, none of them are getting hurt, and it doesn’t look like anyone’s complaining about buying what he’s selling."
+            "I guess I don’t really need to do anything about this."
+            
+            $ status_rogue += 1
+            return
     
     hide bg market with dissolve
     stop music fadeout 1.0
@@ -681,8 +674,9 @@ label l_scene_fight:
                     "I'm disappointed that I couldn't get the full story from the other man, but there's nothing I can do about it now."
                     "Turning away, I return to my patrol."
                     
-            hide bg market with dissolve
-            stop music fadeout 1.0
+                    hide bg market with dissolve
+                    stop music fadeout 1.0
+                    
                     $ status_guard += 1
                     return
                 
@@ -700,8 +694,9 @@ label l_scene_fight:
                     man "Thank you, really."
                     "I wave him off, watching as he awkwardly fumbles through the door with the unconscious man. Indistinct voices come from inside, but I turn away and return to my patrol."
             
-            hide bg market with dissolve
-            stop music fadeout 1.0
+                    hide bg market with dissolve
+                    stop music fadeout 1.0
+                    
                     # no status update
                     return
         
@@ -1023,7 +1018,9 @@ label l_ending_heist:
     "Time to don my chainmail and get ready for \"work,\" heh heh."
     
     menu:
-        "Grab your mace and get out there"
+        "Grab your mace and get out there":
+            pass
+    
     return
 
 label l_ending_fail:
