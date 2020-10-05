@@ -33,6 +33,8 @@ default player_pronoun_verb = "are"
 default player_pronoun_cap_subject = "They"
 default player_pronoun_cap_object = "Them"
 default player_pronoun_cap_possessive = "Their"
+default player_pronoun_informal = "chap"
+default player_pronoun_honorific = "Overlord"
 
 default day_index = 0
 default day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -72,6 +74,8 @@ label l_intro:
             $ player_pronoun_cap_subject = "They"
             $ player_pronoun_cap_object = "Them"
             $ player_pronoun_cap_possessive = "Their"
+            $ player_pronoun_informal = "sonny"
+            $ player_pronoun_honorific = "Mister"
         "He/him":
             $ player_pronoun_subject = "he"
             $ player_pronoun_object = "him"
@@ -80,6 +84,8 @@ label l_intro:
             $ player_pronoun_cap_subject = "He"
             $ player_pronoun_cap_object = "Him"
             $ player_pronoun_cap_possessive = "His"
+            $ player_pronoun_informal = "lassie"
+            $ player_pronoun_honorific = "Missus"
         "She/her":
             $ player_pronoun_subject = "she"
             $ player_pronoun_object = "her"
@@ -88,6 +94,8 @@ label l_intro:
             $ player_pronoun_cap_subject = "She"
             $ player_pronoun_cap_object = "Her"
             $ player_pronoun_cap_possessive = "Her"
+            $ player_pronoun_informal = "old chap"
+            $ player_pronoun_honorific = "Overlord"
     
     cap "Hmm... is that so."
     
@@ -642,7 +650,7 @@ label l_scene_drunk:
             drunk "Oh, you know, *hic* life an' all da stuff whereabouts ya getting by..."
             "Grinning faintly at the man, I listen to him ramble for a bit. He doesn't get anywhere but he does vaguely recall a couple amusing stories before I give him a pat on the shoulder."
             you "Well, I have a patrol to return to, Have a nice day, sir."
-            drunk "Youz too, (Mister, Miss, Yousa) constable, (Sir,/Ma'am,/Ya) haha."
+            drunk "Youz too, [player_pronoun_honorific] constable, [player_pronoun_informal] haha."
             "He throws a drunken salute, as he staggers away."
             "I chuckle a bit, and return to my patrol."
         
@@ -658,10 +666,10 @@ label l_scene_drunk_nuisance:
     "I hear drunken shouting and cheering. Rounding a corner to find it, I see a small gathering of peasants."
     "Each of their faces are rosy, and most of them have spills on their shirts. The smell of alcohol fills my nostrils."
     dave "Ha! And then the knave produced a dagger and advanced towards me, when I unsheathed mine rapier and laughed at him."
-    dave "And we had a good bout of banter! \"Thine sword's looking a little short, sir!\' "
+    dave "And we had a good bout of banter! \"Thine sword's looking a little short, sir!\""
     dave "He replied \"Ha! Ye've got yerself a big ol' blade, ye compensatin' fer anyfin?\""
     "By this time, I've walked all the way up to the group. I'm about to say something, when-"
-    dave "Now hold, fellow friends, now who approaches our little gathering? Behold this (man, woman, chap), all dressed up in crimson and gold!"
+    dave "Now hold, fellow friends, now who approaches our little gathering? Behold this [player_pronoun_informal], all dressed up in crimson and gold!"
     "He parts the gathering and points directly at me."
     dave "Pray tell, whomst art thou?"
     "you I'm a City Constable, friend. I just wanted all of you to-"
