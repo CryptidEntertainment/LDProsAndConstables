@@ -1,6 +1,6 @@
-﻿define cap = Character("Captain Louis Sir")
+﻿define cap = Character("Captain Louis Sirr")
 # just in case
-define cap_unknown = Character("Captain Louis Sir")
+define cap_unknown = Character("Captain Louis Sirr")
 
 default status_urchin = 0
 default status_thief = 0
@@ -170,8 +170,29 @@ label l_cycle:
             pass
 
     call l_morning
+    
+    "A couple hours pass, and the sun is a little bit past overhead now. It beats warmly down on my tabard."
+    "I can hear the sound of chainmail approaching me. The next Constable should be coming for the afternoon shift."
+    "He give me a quick nod as he reaches me, and I take off to go to my afternoon assignment."
+    "The sounds of profit - that is, shouting and announcements and haggling - get louder as I approach the marketplace."
+    "I hope to myself that nothing terrible happens today."
+    "Something always happens, but I just hope it isn’t too bad."
+    
     call l_afternoon
+    
+    "The air begins to cool again as the sky darkens. My shift should be over about now."
+    "Time to report to Captain Sirr about the day."
+    "I walk back into the barracks, and find the Captain in his quarters."
+    "Captain Sirr: You’re back safe and sound. What happened today?"
+    
     call l_night
+    
+    "The air begins to cool again as the sky darkens. My shift should be over about now."
+    "I sigh, and head back to the barracks."
+    "And I do the same thing as I do, every night - take off my armor, hang up my tabard, and take out the oil and rag to clean them."
+    "My equipment is dusty. Walking the dirt roads all day will do that to them."
+    "After a while of polishing and cleaning, it’s time to sleep. I lie down on my cot, and pull the woolen blanket over me."
+    "Eventually, my eyes turn heavy and the room goes dark."
     
     $ day_index += 1
     
@@ -181,7 +202,11 @@ label l_cycle:
     return
 
 label l_morning:
-    "Morning"
+    "The morning air is still cold when I leave the barracks. The morning dew wets my boots."
+    "I walk through the dirt roads until I get to my assigned post."
+    "The sun is just over the horizon, now, and my shift begins."
+    "Let’s see what happens today..."
+
     return
 
 label l_afternoon:
