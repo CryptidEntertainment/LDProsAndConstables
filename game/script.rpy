@@ -1,9 +1,6 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define e = Character("Eileen")
+﻿define cap = Character("Captain Louis Sir")
+# just in case
+define cap_unknown = Character("Captain Louis Sir")
 
 default status_urchin = 0
 default status_thief = 0
@@ -27,6 +24,8 @@ image shit = "shit.png"
 image sir = "sir.png"
 image hair = "hair.png"
 image urchin = "derp.png"
+image merchant = "hat.png"
+image drunkard = "beer.png"
 
 label start:
     call l_intro
@@ -65,19 +64,15 @@ label l_loop_evening:
     return
 
 label l_intro:
-    
+
     $ renpy.pause(3)
     
     show sir at left with vpunch
     
-    "HALT!"
-    
-    
-    
-    
+    cap_unknown "Halt!"
     
     menu:
-        "State your pronouns!"
+        cap_unknown "Declare your pronouns!"
         
         "They/them":
             $ player_pronoun_subject = "they"
@@ -104,16 +99,62 @@ label l_intro:
             $ player_pronoun_cap_object = "Her"
             $ player_pronoun_cap_possessive = "Her"
     
-    "Oh."
-    "Effrafax of Wug, is that you?"
+    cap "Hmm... is that so."
     
     menu:
-        "It's hard to see in the dark."
+        cap "State your business!"
         
-        "Surely the helmet is not helping, Captain Sir.":
-            "What? My helmet is fine! Show some respect!"
-        "It sure is, Captain Sir!":
-            "Show some respec— oh. Yes. Yes, it is."
+        "I just signed up for the City Constables. Do you know where the captain can be found?":
+            cap_unknown "Where the captain can be found? I AM the captain!"
+        
+        "Just looking around.":
+            cap_unknown "In a place like this? Bah, you must be one of those idiot new recruits."
+        
+        "I'm looking for the toilet.":
+            cap_unknown "In a place like this?"
+            cap_unknown "Down the stairs and on the right."
+            cap_unknown "And don't just wander into the barracks next time you need a toilet, citizen! That's a security risk!"
+            
+            $ renpy.pause(1)
+            hide sir with dissolve
+            $ renpy.pause(2)
+            
+            "Down the stairs and on the right is the front door."
+            "He seems to be trying to get rid of me."
+            
+            $ renpy.pause(1)
+            
+            return
+    
+    cap_unknown "Alright then, trainee. My name is Captain Louis Sirr, Guard Captain of the City Constables. I’m going to teach you about being a proper Constable."
+    
+    menu:
+        cap "Are you ready, recruit? These next few days are going to be rough if you’re unprepared."
+        "Yes sir.":
+            cap "What did you just say to me?"
+            
+            menu:
+                cap "I don't think I heard you."
+                "Sir, yes sir!":
+                    cap "Now, that’s what I like to hear! First, we’ll begin with your equipment..."
+                    #!!!!!
+                "I, um, think I’m ready, sir?":
+                    # Guard Captain Sir puts his head in his hands and sighs.
+                    cap "We're going to have to work on that. Alright, let’s start with scrubbing the chamber pots..."
+                    #!!!!!
+            
+        "I don’t think I’m ready yet.":
+            cap "Well then, what are you doing here? This training is for those who want to be a guard! Don’t waste my time."
+            
+            $ renpy.pause(1)
+            hide sir with dissolve
+            $ renpy.pause(2)
+            
+            "Well, shit."
+            
+            $ renpy.pause(1)
+            
+            return
     
     return
 
