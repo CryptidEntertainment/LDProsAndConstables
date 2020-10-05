@@ -45,12 +45,12 @@ image urchin = "derp.png"
 image thief = "hat.png"
 image drunkard = "beer.png"
 
-image bg barracks = "barracks.png"
-image bg alley = "alley.png"
-image bg alleynight = "alleynight.png"
-image bg mainstreet = "mainstreet.png"
-image bg market = "market.png"
-image bg endscreen = "endscreen.png"
+image bg barracks = "bg/barracks.png"
+image bg alley = "bg/alley.png"
+image bg alleynight = "bg/alleynight.png"
+image bg mainstreet = "bg/mainstreet.png"
+image bg market = "bg/market.png"
+image bg endscreen = "bg/endscreen.png"
 
 transform slightleft:
     xalign 0.25
