@@ -26,6 +26,9 @@ default status_guards = 0
 default status_guard_captain = 0
 default status_merchant = 0
 
+default status_rogue = 0
+default status_guard = 0
+
 default player_pronoun_subject = "they"
 default player_pronoun_object = "them"
 default player_pronoun_possessive = "their"
@@ -465,10 +468,18 @@ label l_scene_murder:
             you "Of course."
             "With a quick salute, I leave the scene to the patrol guards. I know I shouldn't have abandoned my post, but that woman would have died if I hadn't gotten there as soon as I did."
             "Thinking that, I return to my post."
+            
+            $ status_guard += 1
+            return
+        
         "I have to stay at my post":
             you "We have to stay here. This is our post."
             guard "Obviously. Let the patrol guards deal with it."
             "We all nod, and continue manning the gate."
+            
+            $ status_rogue += 1
+            return
+    
     return
 
 label l_scene_fight:
@@ -491,6 +502,9 @@ label l_scene_fight:
             man "Of course! There were three of them. They were all in black with these, these robes, and they just ran all up around us and attacked us."
             man "They beat us up and stole all our money."
             you "Does he really expect me to believe it was people in dark robes? Why not just say some hoodlums? At least that would be sort of believable."
+            
+            # no status update
+            return
         
         "Examine the other man":
             you "So, what about your friend here?"
@@ -531,6 +545,9 @@ label l_scene_fight:
                     you "Huh, too bad."
                     "I'm disappointed that I couldn't get the full story from the other man, but there's nothing I can do about it now."
                     "Turning away, I return to my patrol."
+                    
+                    $ status_guard += 1
+                    return
                 
                 "Let him go":
                     you "Fine, fine. I'll believe your story. However..."
@@ -545,6 +562,9 @@ label l_scene_fight:
                     "I leave the men on the doorstep. He can barely keep the other upright as he leans against the door, but he manages."
                     man "Thank you, really."
                     "I wave him off, watching as he awkwardly fumbles through the door with the unconscious man. Indistinct voices come from inside, but I turn away and return to my patrol."
+                    
+                    # no status update
+                    return
         
         "That's enough":
             you "Yeah, yeah, I've heard enough. I'm taking you in."
@@ -561,6 +581,9 @@ label l_scene_fight:
             "I return to the spot where the unconscious man was, but he's gone when I arrive."
             you "Huh, guess he woke up. Would've been nice to find out what actually happened, but... oh well."
             "Shrugging it off, I return to my patrol."
+            
+            $ status_guard += 1
+            return
         
         "Jail him for lying about knocking out the other man":
             you "Yeah, yeah, uh huh."
@@ -575,6 +598,10 @@ label l_scene_fight:
             "I return to the spot where the unconscious man was, but he's gone when I arrive."
             you "Gone, huh... Whatever."
             "Shrugging, I return to my patrol."
+            
+            $ status_guard += 1
+            return
+    
     return
 
 label l_scene_change:
@@ -593,6 +620,9 @@ label l_scene_change:
             child "Eep!"
             "He dashes away into the crowd."
             "I sigh, shaking my head, and return to my patrol."
+            
+            # no status update
+            return
         
         "Give him something":
             you "Sure, why not?"
@@ -600,6 +630,10 @@ label l_scene_change:
             child "Thanks a lot, Mister!"
             "With a smile on his face, he dashes away into the crowd."
             "I return to my patrol."
+            
+            $ status_guard += 1
+            return
+    
     return
 
 label l_scene_chicken:
@@ -626,6 +660,9 @@ label l_scene_chicken:
             woman4 "Oh, thank you! Thank you so much."
             "Hugging the animal to her chest, she runs off."
             "Shaking my head, I return to my post."
+            
+            $ status_guard += 1
+            return
         
         "This must be a distraction":
             you "Sorry ma'am, I can't leave my post."
@@ -635,6 +672,10 @@ label l_scene_chicken:
             "Her shouts disappear into the street."
             "you I wonder if she really needs help with something...?"
             "Shrugging, I continue to stand guard."
+            
+            # no status update
+            return
+    
     return
 
 label l_scene_drunk:
@@ -657,6 +698,9 @@ label l_scene_drunk:
             drunk "Youz too, [player_pronoun_honorific] constable, [player_pronoun_informal], haha."
             "He throws a drunken salute, as he staggers away."
             "I chuckle a bit, and return to my patrol."
+            
+            $ status_rogue += 1
+            return
         
         "Send him away":
             you "You're drunk, sir."
@@ -664,6 +708,10 @@ label l_scene_drunk:
             you "Off with you now!"
             "I shoo him away. He grouches at me, but staggers off."
             "I roll my eyes, and return to my patrol."
+            
+            $ status_guard += 1
+            return
+    
     return
 
 label l_scene_drunk_nuisance:
@@ -704,6 +752,9 @@ label l_scene_drunk_nuisance:
             dave "Pray tell, mine fellow in a tabard of red and gold, that thou had not filled thine pants with a similar gold?"
             dave "Gaze upon the mighty Constable running away from some filthy peasants, retreating home to change his trousers!"
             "The peasants roar with laughter as I storm away, their voices slowly fading down the street."
+            
+            $ status_rogue += 1
+            return
         
         "Assert yourself":
             "I begin to shout and the inebriated idiots."
@@ -713,6 +764,9 @@ label l_scene_drunk_nuisance:
             you "No, I'm not going to let you finish. Either you stop causing a scene in the street, or you-"
             dave "Mine good fellows, don't get let your spirits fall. For we shall continue our festivities at my abode! Tally-ho!"
             "The commoners cheer once more, as they stumble down the dirt paths out of the street."
+            "Well, that takes care of that."
+            
+            $status_guard += 1
+            return
     
-    "Well, that takes care of that."
     return
