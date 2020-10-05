@@ -42,8 +42,22 @@ image shit = "shit.png"
 image sir = "sir.png"
 image hair = "hair.png"
 image urchin = "derp.png"
-image merchant = "hat.png"
+image thief = "hat.png"
 image drunkard = "beer.png"
+
+image bg barracks = "barracks.png"
+image bg alley = "alley.png"
+image bg alleynight = "alleynight.png"
+image bg mainstreet = "mainstreet.png"
+image bg market = "market.png"
+image bg endscreen = "endscreen.png"
+
+transform slightleft:
+    xalign 0.25
+    yalign 1.0
+transform slightright:
+    xalign 0.75
+    yalign 1.0
 
 default THIEVES_GUILD = "[THE THIEVES' GUILD]"
 default DAYS_TOTAL = 6
@@ -158,7 +172,13 @@ label l_intro:
     hide sir with dissolve
     $ renpy.pause(2)
     
-    "A year ago, I had enlisted to join the City Constables. It was the day that I matured into a real adult: my 16th birthday."
+    "..."
+    "It's morning..."
+    
+    show bg barracks with dissolve
+    play music "Normal2.mp3"
+    
+    "A year ago, I enlisted to join the City Constables. It was the day that I matured into a real adult: my 16th birthday."
     "But I've been stagnating. Doing the same thing every single day, from wake to sleep, day in, day out."
     "Wake up in the barracks."
     "Stand on the street corner in the morning."
@@ -182,6 +202,7 @@ label l_intro:
     you "Well. Today is Monday, and it's the beginning of another work day."
     you "I should get ready to work."
     
+    stop music fadeout 1.0
     jump l_cycle
     
     return
@@ -189,6 +210,8 @@ label l_intro:
 label l_cycle:
     $ day_index_sub = DAYS_TOTAL - day_index
     $ day_index_name = day_names[day_index]
+    
+    show bg barracks with dissolve
     
     "It's the crack of dawn, and the sun has begun rising."
     "Today is [day_index_name], with [day_index_sub] days until the end of the week."
@@ -262,7 +285,18 @@ label l_cycle:
     return
 
 label l_scene_pickpocket:
+    show bg mainstreet with dissolve
+    play music "Confrontation.mp3"
+    
     "I'm crossing a street when a certain person moving in the crowd catches my eye with the way they're moving."
+    
+    show thief at slightleft with dissolve
+    show mom at slightright with dissolve
+    
+    "..."
+    
+    show thief at center with move
+    
     "I watch close. He moves up behind a woman, then rushes forward, jostling past her and using the distraction to cut away her coin purse."
     
     menu:
@@ -273,10 +307,21 @@ label l_scene_pickpocket:
             "Turning my back on the scene, I let it pass and continue my patrol."
             "Must be one of [THIEVES_GUILD]. Just let him pass..."
             "Pretending not to notice, I continue my patrol."
+            
+            hide thief with dissolve
+            hide mom with dissolve
+            stop music fadeout 1.0
         
         "Approach the man":
+            
+            hide thief with dissolve
+            hide mom with dissolve
+
             "I give it some time, keeping my distance as I follow the thief. He's on guard for a minute before he calms down, and I'm able to get closer without him noticing."
             "Moving in behind him, I keep quiet until I'm right on him, and grab his arm hard."
+            
+            show thief at center with dissolve
+            
             thief "What?!"
             "He spins back. When he sees me, he struggles, but my grip is solid, he isn't getting away from me that easily."
             you "I saw you rob that woman."
@@ -292,11 +337,19 @@ label l_scene_pickpocket:
                     thief "How about option three?"
                     "With his free hand, he tosses the coin purse up into the air."
                     you "Shit!"
+                    
+                    show thief at offscreenright with move
+                    hide bg mainstreet with dissolve
                     "I stagger backward, diving and falling flat on my back as I barely catch the bag to keep it from spilling its contents all over the ground."
                     you "Ugh. He got away."
+                    
+                    show bg mainstreet with dissolve
                     "By the time I've recovered and made it back to my feet, the thief is long gone."
                     you "At least I got the money back."
                     "After backtracking to where the woman was pickpocketed, I have to search the nearby areas before I find her."
+                    
+                    show mom at center with dissolve
+                    
                     you "Excuse me, Miss."
                     woman "Yes, constable?"
                     you "You were pickpocketed earlier. I recovered your coin purse for you."
@@ -305,9 +358,15 @@ label l_scene_pickpocket:
                     woman "Thank you so much!"
                     you "Just doing my job."
                     "I hand back her coin purse, and she quickly fastens it back in place, before seeing me off."
+                    
+                    hide mom with dissolve
+                    
                     "As I'm walking away, a random thought comes back to mind."
                     you "Did he say \"option three?\" I never gave him an option two..."
                     "Shake my head, laughing a little to myself as I return to my patrol."
+                    
+                    hide bg mainstreet with dissolve
+                    stop music fadeout 1.0
                 
                 "Don't bother":
                     you "Nothing."
@@ -318,15 +377,28 @@ label l_scene_pickpocket:
                     you "You're going to owe me one. Remember that."
                     "The man's expression turns sour."
                     thief "Fair enough."
+                    
+                    hide thief with dissolve
+                    
                     "He shakes off my hand and this time, I let him go. He huffs indignantly, and slouches off down the street."
                     "Grinning to myself a little, I return to my patrol."
+                    
+                    hide bg mainstreet with dissolve
+                    stop music fadeout 1.0
 
     return
 
 label l_scene_swindle:
+    
+    show bg market with dissolve
+    play music "Normal1.mp3"
+    
     "I'm walking through a market when..."
     unknown "My my, what a gorgeous selection you have here!"
     "I turn to the loud praise and watch."
+    
+    show hair at slightleft with dissolve
+    
     "A tall woman is leaning over the counter, with a merchant standing behind it, blushed red from ear to ear. The counter has treats, a mix of pastries, chocolates, and such, on display."
     woman2 "I would ever so much love to purchase one of these. Like this..."
     merchant "Th-that? Just five coppers..."
@@ -349,6 +421,10 @@ label l_scene_swindle:
             you "She just said she didn't have any money."
             "He looks mildly displeased, but can't say anything in response."
             "With a shrug and a wave, I return to my patrol."
+            
+            hide hair with dissolve
+            hide bg market with dissolve
+            stop music fadeout 1.0
         
         "Keep watching":
             "Ehh, she's not doing anything illegal... yet..."
@@ -356,6 +432,7 @@ label l_scene_swindle:
             woman2 "Oh... W-well, maybe..."
             "Looking very uncomfortable, the man flounders in front of the woman."
             "If I'm going to step in, it has to be now..."
+            
             
             menu:
                 "Well, do you?"
@@ -372,44 +449,59 @@ label l_scene_swindle:
                     "He hasn't even realized he was being swindled, has he?"
                     you "Have a nice day."
                     "With a subtle shake of my head, I leave the foolish merchant behind, and return to my patrol."
+                    
+                    hide hair with dissolve
+                    hide bg market with dissolve
+                    stop music fadeout 1.0
                 "Let it go":
                     you "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
                     "With a shrug of my shoulders, I leave the foolish merchant to his fate and return to my patrol."
+                    hide hair with dissolve
+                    hide bg market with dissolve
+                    stop music fadeout 1.0
         
-        "Let it go":
-            you "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
-            "With a shrug of my shoulders, I leave the foolish merchant to his fate and return to my patrol."
     return
 
 label l_scene_mushrooms:
-"As I’m walking through the marketplace, I see a gathering of people in an alleyway."
-"I can hear the people talking to each other. I step closer to investigate.
-con "Buy Arcane Mushrooms! They’ll make you stronger, guaranteed! Buy ‘em today!
-"What the hell is it that he’s peddling?
-"A small crowd has already gathered around this man."
-menu:
-    "Should I do something about it?"
-        "Approach"
-            "you Move aside, move aside, constable coming through."
-            "I should at least figure out what’s going on. I make my way past a couple people and walk up to the merchant."
-            "There are many types of mushrooms in his cloak, all shapes and sizes and colors."
-            you "I don’t think I’ve even seen you selling anything before. You new in this market?"
-            con "I just pick and sell mushrooms on the side. I started my mushrooming journey a few years ago, all the way back in the land of-"
-            you "I don’t need to hear your life’s story. Tell me more about what you’re selling."
-            con "Arcane Mushrooms. They’ll give you a big boost, however you need it! There’s a mushroom for every occasion, and they’re simply magical!"
-            "I don’t know how much I trust this man, and I know nothing about his product."
+    
+    show bg market with dissolve
+    play music "Normal.mp3"
+    
+    "As I'm walking through the marketplace, I hear a voice begin shouting excitedly over all of the others. I walk over to the commotion."
+    
+    show thief at center with dissolve
+    
+    con "Buy Arcane Mushrooms today! They'll solve any problem, guaranteed! Buy 'em today!"
+    "I don't recognise this merchant... and what the hell is it that he's peddling?"
+    "A small crowd has already gathered around this man."
+    
+    menu:
+        "Should I do something about it?"
+        
+        "Approach":
+            you "Move aside, move aside, constable coming through."
+            "I should at least figure out what's going on. I make my way past a couple people and walk up to the merchant."
+            "There are many types of mushrooms on his stand, all shapes and sizes and colors."
+            "He's smiling. He almost seems too happy to see me walking up to his stand."
+            you "I don't think I've even seen you around before. You new in this market?"
+            con "Why yes, because I'm a travelling merchant! I started my mushrooming journey a few years ago, all the way back in the land of—"
+            you "I don't need to hear your life's story. Tell me more about what you're selling."
+            con "Why, they're Arcane Mushrooms! They'll fix any and every problem in your life! There's a mushroom for every occasion, and they're simply magical!"
+            "I don't know how much I trust this man, and I know nothing about his product."
+            
             menu:
-                "How should I handle this?"
+                "What's the logical course of action?"
                 
                 "Question him further":
                     you "Tell me more about what these mushrooms can specifically do."
+                    con "Why, they alleviate headaches and stomachaches and can cure any sickness or physical ill!"
                     con "They can bulk up your muscles, make you more flexible, or make you think twice as fast as you do right now!"
                     you "How do you know that they work? Have you eaten all of these before?"
-                    "A bead of sweat begins to drip down the merchant’s forehead."
-                    con "Why, well the phrase amongst us dealers is to not get hi- I mean, don’t deny your whole supply to your customers!"
-                    con "I’d lose a lot of profit if I did that! Imagine if a butcher ate half of every steak that he had to peddle."
-                    you "Certainly they’re all safe to eat, right?"
-                    con "Of course they’re all safe! I’ve been selling them for years without incident!"
+                    "A bead of sweat begins to drip down the merchant's forehead."
+                    con "Why, well the phrase amongst us dealers is to not get hi- I mean, don't deny your whole supply to your customers!"
+                    con "I'd lose a lot of profit if I did that! Imagine if a butcher ate half of every steak that he had to peddle."
+                    you "Certainly they're all safe to eat, right?"
+                    con "Of course they're all safe! I've been selling them for years without incident!"
                     con "Not a single soul has ever died because of my mushrooms and come to me complaining about it."
                     "Something feels very suspicious about this man and the way he answers my questions."
                     "What should I do about this?"
@@ -422,7 +514,17 @@ menu:
                     you "I suggest you make like the rest of the peasants before I have to take you away."
                     "The merchant grumbles, but leaves the alleyway with his goods."
                     "Alright. That took care of that."
-        
+                    
+                "Stop him from selling anything":
+                    "I can’t just let this man scam our village out of money and possibly poison our peasantry."
+                    you "Alright. Here’s what’s going to happen. You’re going to pack up your little store, and stop selling your mushrooms here."
+                    con "What? Why! I haven’t done anything wrong!"
+                    "Some of the peasants begin walking away."
+                    con "My profits!"
+                    you "I suggest you make like the rest of the peasants before I have to take you away."
+                    "The merchant grumbles, but leaves the alleyway with his goods."
+                    "Alright. That took care of that."
+                    
                     $ status_guard += 1
                     return
                 "Let the man sell his goods":
@@ -438,10 +540,16 @@ menu:
         
         $ status_rogue += 1
         return
-
+    
+    hide bg market with dissolve
+    stop music fadeout 1.0
     return
 
 label l_scene_murder:
+    
+    show bg mainstreet with dissolve
+    play music "Confrontation.mp3"
+    
     "I'm stationed at a gate when..."
     woman3 "EEEEIIIIIIAAAAAAAAA!!!!!!"
     "Everyone jumps at the piercing scream."
@@ -453,11 +561,16 @@ label l_scene_murder:
         "I should check that out!":
             guard "Wait! Leave it for the patrols."
             you "We're the closest, and it sounded bad!"
+            hide bg mainstreet with dissolve
             "Before anyone can argue further, I rush away from the gate, toward the sound of the scream."
+            show bg alley with dissolve
             "It's just a couple blocks, and I'm there in no time."
             you "Oh, shit!"
             "As soon as the scene comes into sight, my blood runs cold."
             "There are a few people scattered about watching, and a woman collapsing, a pool of deep red blood already forming beneath her."
+            show thief at center with dissolve
+            "..."
+            show thief at offscreenleft with move
             "I barely spot the glint of metal and the flick of blood as the perpetrator flees, turning a corner and disappearing."
             you "Guard! Move aside!"
             "My voice clears the crowd so I can slide to the woman's side. One look shows she's been stabbed badly in the stomach."
@@ -473,13 +586,18 @@ label l_scene_murder:
             you "I hope you make it..."
             guard "Guards coming through!"
             "I stand to meet the approaching guards."
+            show shit at center with dissolve
             guard "What are you doing here?"
             you "I was closest to the scene, over at the gate. I treated her wounds, but she still needs real medical attention."
             "The guards all inspect the half-conscious woman uncertainly."
             guard "Sure... We'll deal with it from here, get back to your post!"
             you "Of course."
+            hide shit with dissolve
             "With a quick salute, I leave the scene to the patrol guards. I know I shouldn't have abandoned my post, but that woman would have died if I hadn't gotten there as soon as I did."
             "Thinking that, I return to my post."
+            
+            hide bg alley with dissolve
+            stop music fadeout 1.0
             
             $ status_guard += 1
             return
@@ -488,6 +606,8 @@ label l_scene_murder:
             you "We have to stay here. This is our post."
             guard "Obviously. Let the patrol guards deal with it."
             "We all nod, and continue manning the gate."
+            hide bg mainstreet with dissolve
+            stop music fadeout 1.0
             
             $ status_rogue += 1
             return
@@ -495,6 +615,9 @@ label l_scene_murder:
     return
 
 label l_scene_fight:
+    show bg market with dissolve
+    play music "Confrontation.mp3"
+    
     "I'm walking through a crowded district when..."
     unknown "Argh!"
     "The cry draws my attention down an alley, before I know it, I've passed through, straight into a familiar scene."
@@ -558,6 +681,8 @@ label l_scene_fight:
                     "I'm disappointed that I couldn't get the full story from the other man, but there's nothing I can do about it now."
                     "Turning away, I return to my patrol."
                     
+            hide bg market with dissolve
+            stop music fadeout 1.0
                     $ status_guard += 1
                     return
                 
@@ -574,7 +699,9 @@ label l_scene_fight:
                     "I leave the men on the doorstep. He can barely keep the other upright as he leans against the door, but he manages."
                     man "Thank you, really."
                     "I wave him off, watching as he awkwardly fumbles through the door with the unconscious man. Indistinct voices come from inside, but I turn away and return to my patrol."
-                    
+            
+            hide bg market with dissolve
+            stop music fadeout 1.0
                     # no status update
                     return
         
@@ -594,6 +721,8 @@ label l_scene_fight:
             you "Huh, guess he woke up. Would've been nice to find out what actually happened, but... oh well."
             "Shrugging it off, I return to my patrol."
             
+            hide bg market with dissolve
+            stop music fadeout 1.0
             $ status_guard += 1
             return
         
@@ -611,14 +740,22 @@ label l_scene_fight:
             you "Gone, huh... Whatever."
             "Shrugging, I return to my patrol."
             
+            hide bg market with dissolve
+            stop music fadeout 1.0
             $ status_guard += 1
             return
     
     return
 
 label l_scene_change:
+    show bg alley with dissolve
+    play music "Normal2.mp3"
+    
     "I'm on patrol when..."
     child "Hey Mister, hey Mister!"
+    
+    show urchin at center with dissolve 
+    
     "A small street child runs up to me, grabbing my leg."
     child "Could you spare some change?"
     
@@ -630,9 +767,15 @@ label l_scene_change:
             "I shake him off, scowling."
             you "Scram! Get out of here before I arrest you for disturbing the peace."
             child "Eep!"
+            
+            show urchin at offscreenright with move
+            
             "He dashes away into the crowd."
             "I sigh, shaking my head, and return to my patrol."
             
+            hide urchin
+            hide bg alley with dissolve
+            stop music fadeout 1.0
             # no status update
             return
         
@@ -640,17 +783,27 @@ label l_scene_change:
             you "Sure, why not?"
             "I flip him a coin."
             child "Thanks a lot, Mister!"
+            
+            show urchin at offscreenright with move
             "With a smile on his face, he dashes away into the crowd."
             "I return to my patrol."
-            
+            hide urchin
+            hide bg alley with dissolve
+            stop music fadeout 1.0
             $ status_guard += 1
             return
     
     return
 
 label l_scene_chicken:
+    
+    show bg market with dissolve
+    play music "Normal3.mp3"
+                
     "I'm put on duty guarding the jail, when..."
     unknown "Guards, guards!"
+    show mom at center with dissolve
+    
     "An exhausted looking woman runs up to me."
     woman "Please, please come help!"
     you "I could, but I'd be leaving my post."
@@ -660,19 +813,34 @@ label l_scene_chicken:
         
         "She needs help!":
             you "Of course!"
+            hide mom with dissolve
+            hide bg market with dissolve
             "I dash after the woman as she runs away. We go a few blocks, arriving in front of a tree."
+            
+            show bg mainstreet with dissolve
+            show mom at slightright with dissolve
+            
             woman4 "There, my baby is up there!"
             "She points up the tree and..."
             you "Is that a chicken?"
             "Up in the tree, there's a chicken, seemingly stuck."
             "All the tension about the woman who seemed to need help vanishes."
             you "Well, I'm already here..."
+            
+            hide mom with dissolve
+            hide bg mainstreet with dissolve
+            
             "Thinking as much, I climb up into the branches and grab the chicken. It struggles a little, but I manage to get back down without too much trouble."
+            
+            show bg mainstreet with dissolve
+            show mom at slightright with dissolve
             you "Here's your... bird, ma'am."
             woman4 "Oh, thank you! Thank you so much."
             "Hugging the animal to her chest, she runs off."
             "Shaking my head, I return to my post."
-            
+            hide mom with dissolve
+            hide bg mainstreet with dissolve
+            stop music fadeout 1.0
             $ status_guard += 1
             return
         
@@ -684,6 +852,9 @@ label l_scene_chicken:
             "Her shouts disappear into the street."
             "you I wonder if she really needs help with something...?"
             "Shrugging, I continue to stand guard."
+            hide mom with dissolve
+            hide bg mainstreet with dissolve
+            stop music fadeout 1.0
             
             # no status update
             return
@@ -691,8 +862,11 @@ label l_scene_chicken:
     return
 
 label l_scene_drunk:
+    show bg alley with dissolve
+    play music "Normal1.mp3"
     "While I'm on patrol..."
     drunk_unknown "Oya there, *hic*"
+    show drunkard at center with dissolve
     "I turn and find a clearly drunk man approaching."
     drunk "How's its all shaking, [player_pronoun_informal]?"
     "I sigh."
@@ -710,7 +884,9 @@ label l_scene_drunk:
             drunk "Youz too, [player_pronoun_honorific] constable, [player_pronoun_informal], haha."
             "He throws a drunken salute, as he staggers away."
             "I chuckle a bit, and return to my patrol."
-            
+            hide drunkard
+            hide bg alley with dissolve
+            stop music fadeout 1.0
             $ status_rogue += 1
             return
         
@@ -720,15 +896,22 @@ label l_scene_drunk:
             you "Off with you now!"
             "I shoo him away. He grouches at me, but staggers off."
             "I roll my eyes, and return to my patrol."
-            
+            hide drunkard with dissolve
+            hide bg alley with dissolve
+            stop music fadeout 1.0
             $ status_guard += 1
             return
     
     return
 
 label l_scene_drunk_nuisance:
+    
+    show bg alley with dissolve
+    play music "Normal3.mp3"
+    
     "I hear drunken shouting and cheering. Rounding a corner to find it, I see a small gathering of peasants."
     "Each of their faces are rosy, and most of them have spills on their shirts. The smell of alcohol fills my nostrils."
+    show drunkard at center with dissolve
     dave "Ha! And then the knave produced a dagger and advanced towards me, when I unsheathed mine rapier and laughed at him."
     dave "And we had a good bout of banter! \"Thine sword's looking a little short, sir!\""
     dave "He replied \"Ha! Ye've got yerself a big ol' blade, ye compensatin' fer anyfin?\""
@@ -764,7 +947,9 @@ label l_scene_drunk_nuisance:
             dave "Pray tell, mine fellow in a tabard of red and gold, that thou had not filled thine pants with a similar gold?"
             dave "Gaze upon the mighty Constable running away from some filthy peasants, retreating home to change his trousers!"
             "The peasants roar with laughter as I storm away, their voices slowly fading down the street."
-            
+            hide drunkard with dissolve
+            hide bg alley with dissolve
+            stop music fadeout 1.0
             $ status_rogue += 1
             return
         
@@ -777,7 +962,9 @@ label l_scene_drunk_nuisance:
             dave "Mine good fellows, don't get let your spirits fall. For we shall continue our festivities at my abode! Tally-ho!"
             "The commoners cheer once more, as they stumble down the dirt paths out of the street."
             "Well, that takes care of that."
-            
+            hide drunkard with dissolve
+            hide bg alley with dissolve
+            stop music fadeout 1.0
             $status_guard += 1
             return
     
