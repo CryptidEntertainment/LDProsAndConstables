@@ -38,6 +38,8 @@ default player_pronoun_honorific = "Overlord"
 
 default day_index = 0
 default day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+default scenes = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+renpy.random.shuffle(scenes)
 
 image mom = "chicken.png"
 image shit = "shit.png"
@@ -74,8 +76,8 @@ label l_intro:
             $ player_pronoun_cap_subject = "They"
             $ player_pronoun_cap_object = "Them"
             $ player_pronoun_cap_possessive = "Their"
-            $ player_pronoun_informal = "sonny"
-            $ player_pronoun_honorific = "Mister"
+            $ player_pronoun_informal = "old chap"
+            $ player_pronoun_honorific = "my good"
         "He/him":
             $ player_pronoun_subject = "he"
             $ player_pronoun_object = "him"
@@ -84,8 +86,8 @@ label l_intro:
             $ player_pronoun_cap_subject = "He"
             $ player_pronoun_cap_object = "Him"
             $ player_pronoun_cap_possessive = "His"
-            $ player_pronoun_informal = "lassie"
-            $ player_pronoun_honorific = "Missus"
+            $ player_pronoun_informal = "sonny"
+            $ player_pronoun_honorific = "Mister"
         "She/her":
             $ player_pronoun_subject = "she"
             $ player_pronoun_object = "her"
@@ -94,8 +96,8 @@ label l_intro:
             $ player_pronoun_cap_subject = "She"
             $ player_pronoun_cap_object = "Her"
             $ player_pronoun_cap_possessive = "Her"
-            $ player_pronoun_informal = "old chap"
-            $ player_pronoun_honorific = "Overlord"
+            $ player_pronoun_informal = "lassie"
+            $ player_pronoun_honorific = "Missus"
     
     cap "Hmm... is that so."
     
@@ -197,6 +199,30 @@ label l_cycle:
         "Grab your mace and get out there":
             pass
 
+    "The morning air is still cold when I leave the barracks. The morning dew wets my boots."
+    "I walk through the dirt roads until I get to my assigned post."
+    "The sun is just over the horizon, now, and my shift begins."
+    "Let's see what happens today..."
+    
+    if scenes[day_index] == 0:
+        jump l_scene_change
+    elif scenes[day_index] == 1:
+        jump l_scene_drunk
+    elif scenes[day_index] == 2:
+        jump l_scene_drunk_nuisance
+    elif scenes[day_index] == 3:
+        jump l_scene_fight
+    elif scenes[day_index] == 1:
+        jump l_scene_murder
+    elif scenes[day_index] == 5:
+        jump l_scene_mushrooms
+    elif scenes[day_index] == 6:
+        jump l_scene_pickpocket
+    elif scenes[day_index] == 7:
+        jump l_scene_swindle
+    elif scenes[day_index] == 8:
+        jump l_scene_chicken
+    
     #call l_morning
     
     #"A couple hours pass, and the sun is a little bit past overhead now. It beats warmly down on my tabard."
@@ -227,30 +253,6 @@ label l_cycle:
     if day_index < DAYS_TOTAL:
         jump l_cycle
     
-    return
-
-label l_morning:
-    "The morning air is still cold when I leave the barracks. The morning dew wets my boots."
-    "I walk through the dirt roads until I get to my assigned post."
-    "The sun is just over the horizon, now, and my shift begins."
-    "Let's see what happens today..."
-    
-    "PICKPOCKET"
-    
-    call l_pickpocket
-    
-    "SWINDLE"
-    
-    call l_swindle
-    
-    return
-
-label l_afternoon:
-    "Afternoon"
-    return
-
-label l_night:
-    "Night"
     return
 
 label l_scene_pickpocket:
@@ -598,7 +600,7 @@ label l_scene_change:
             "I return to my patrol."
     return
 
-label l_chicken:
+label l_scene_chicken:
     "I'm put on duty guarding the jail, when..."
     unknown "Guards, guards!"
     "An exhausted looking woman runs up to me."
@@ -650,7 +652,7 @@ label l_scene_drunk:
             drunk "Oh, you know, *hic* life an' all da stuff whereabouts ya getting by..."
             "Grinning faintly at the man, I listen to him ramble for a bit. He doesn't get anywhere but he does vaguely recall a couple amusing stories before I give him a pat on the shoulder."
             you "Well, I have a patrol to return to, Have a nice day, sir."
-            drunk "Youz too, [player_pronoun_honorific] constable, [player_pronoun_informal] haha."
+            drunk "Youz too, [player_pronoun_honorific] constable, [player_pronoun_informal], haha."
             "He throws a drunken salute, as he staggers away."
             "I chuckle a bit, and return to my patrol."
         
