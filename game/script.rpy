@@ -19,13 +19,6 @@ define woman3 = Character("Woman")
 define woman4 = Character("Woman")
 define you = Character("You")
 
-default status_urchin = 0
-default status_thief = 0
-default status_mom = 0
-default status_guards = 0
-default status_guard_captain = 0
-default status_merchant = 0
-
 default status_rogue = 0
 default status_guard = 0
 default status_requirement = 4
@@ -389,53 +382,63 @@ label l_scene_swindle:
     return
 
 label l_scene_mushrooms:
-    "As I'm walking through the marketplace, I hear a voice begin shouting excitedly over all of the others. I walk over to the commotion."
-    con "Buy Arcane Mushrooms today! They'll solve any problem, guaranteed! Buy 'em today!"
-    "I don't recognise this merchant... and what the hell is it that he's peddling?"
-    "A small crowd has already gathered around this man."
-    
-    menu:
-        "Should I do something about it?"
-        
-        "Approach":
-            you "Move aside, move aside, constable coming through."
-            "I should at least figure out what's going on. I make my way past a couple people and walk up to the merchant."
-            "There are many types of mushrooms on his stand, all shapes and sizes and colors."
-            "He's smiling. He almost seems too happy to see me walking up to his stand."
-            you "I don't think I've even seen you around before. You new in this market?"
-            con "Why yes, because I'm a travelling merchant! I started my mushrooming journey a few years ago, all the way back in the land of—"
-            you "I don't need to hear your life's story. Tell me more about what you're selling."
-            con "Why, they're Arcane Mushrooms! They'll fix any and every problem in your life! There's a mushroom for every occasion, and they're simply magical!"
-            "I don't know how much I trust this man, and I know nothing about his product."
-            
+"As I’m walking through the marketplace, I see a gathering of people in an alleyway."
+"I can hear the people talking to each other. I step closer to investigate.
+con "Buy Arcane Mushrooms! They’ll make you stronger, guaranteed! Buy ‘em today!
+"What the hell is it that he’s peddling?
+"A small crowd has already gathered around this man."
+menu:
+    "Should I do something about it?"
+        "Approach"
+            "you Move aside, move aside, constable coming through."
+            "I should at least figure out what’s going on. I make my way past a couple people and walk up to the merchant."
+            "There are many types of mushrooms in his cloak, all shapes and sizes and colors."
+            you "I don’t think I’ve even seen you selling anything before. You new in this market?"
+            con "I just pick and sell mushrooms on the side. I started my mushrooming journey a few years ago, all the way back in the land of-"
+            you "I don’t need to hear your life’s story. Tell me more about what you’re selling."
+            con "Arcane Mushrooms. They’ll give you a big boost, however you need it! There’s a mushroom for every occasion, and they’re simply magical!"
+            "I don’t know how much I trust this man, and I know nothing about his product."
             menu:
-                "What's the logical course of action?"
+                "How should I handle this?"
                 
                 "Question him further":
                     you "Tell me more about what these mushrooms can specifically do."
-                    con "Why, they alleviate headaches and stomachaches and can cure any sickness or physical ill!"
                     con "They can bulk up your muscles, make you more flexible, or make you think twice as fast as you do right now!"
                     you "How do you know that they work? Have you eaten all of these before?"
-                    "A bead of sweat begins to drip down the merchant's forehead."
-                    con "Why, well the phrase amongst us dealers is to not get hi- I mean, don't deny your whole supply to your customers!"
-                    con "I'd lose a lot of profit if I did that! Imagine if a butcher ate half of every steak that he had to peddle."
-                    you "Certainly they're all safe to eat, right?"
-                    con "Of course they're all safe! I've been selling them for years without incident!"
+                    "A bead of sweat begins to drip down the merchant’s forehead."
+                    con "Why, well the phrase amongst us dealers is to not get hi- I mean, don’t deny your whole supply to your customers!"
+                    con "I’d lose a lot of profit if I did that! Imagine if a butcher ate half of every steak that he had to peddle."
+                    you "Certainly they’re all safe to eat, right?"
+                    con "Of course they’re all safe! I’ve been selling them for years without incident!"
                     con "Not a single soul has ever died because of my mushrooms and come to me complaining about it."
                     "Something feels very suspicious about this man and the way he answers my questions."
+                    "What should I do about this?"
+                        "Stop him from selling anything":
+                    "I can’t just let this man scam our village out of money and possibly poison our peasantry."
+                    you "Alright. Here’s what’s going to happen. You’re going to pack up your little store, and stop selling your mushrooms here."
+                    con "What? Why! I haven’t done anything wrong!"
+                    "Some of the peasants begin walking away."
+                    con "My profits!"
+                    you "I suggest you make like the rest of the peasants before I have to take you away."
+                    "The merchant grumbles, but leaves the alleyway with his goods."
+                    "Alright. That took care of that."
+        
+                    $ status_guard += 1
+                    return
+                "Let the man sell his goods":
+                    you "Just don’t poison anyone. If you do, I won’t be nearly as nice as I am right now."
+                    con "Oh, of course! I thank you for your generosity. Hope to see you again, Constable."
+                    "I exited the alleyway. Was that the right thing to do?"
                     
-                    menu:
-                        "What should I do about this?"
-                        
-                        "Kick him out of town":
-                            "I can't just let this man scam our village out of money and possibly poison our peasantry."
-                            you "Alright. Here's what's going to happen. You're going to pack up your little stand here, and keep moving to another town."
-                            con "What? Why! I haven't done anything wrong!"
-                            peasant "Oi, wait, I din't get to buy any anyfin' yet!"
-        "Bring up the issue to the Captain":
-            pass
-        "Let the man sell his goods":
-            pass
+                    $ status_rogue += 1
+                    return
+	"Ignore":
+        "Well, none of them are getting hurt, and it doesn’t look like anyone’s complaining about buying what he’s selling."
+        "I guess I don’t really need to do anything about this."
+        
+        $ status_rogue += 1
+        return
+
     return
 
 label l_scene_murder:
@@ -792,7 +795,7 @@ label l_ending_neutral:
     "I still don't even know how to bake."
     "..."
     "...shit."
-return
+    return
 
 label l_ending_guard:
     "A voice calls out to me before I get to the door."
@@ -834,7 +837,7 @@ label l_ending_heist:
     
     menu:
         "Grab your mace and get out there"
-return
+    return
 
 label l_ending_fail:
     "Today is Sunday, my last day of being a City Constable."
