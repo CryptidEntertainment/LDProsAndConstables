@@ -34,6 +34,8 @@ image urchin = "derp.png"
 image merchant = "hat.png"
 image drunkard = "beer.png"
 
+default THIEVES_GUILD = "[THE THIEVES' GUILD]"
+
 label start:
     call l_intro
     
@@ -126,7 +128,7 @@ label l_intro:
             hide sir with dissolve
             $ renpy.pause(2)
             
-            "Well, shit."
+            you "Well, shit."
             
             $ renpy.pause(1)
             
@@ -157,8 +159,8 @@ label l_intro:
     "(My life expectancy is around 35...)"
     "(Ah, shit.)"
     "..."
-    "Well. Today is Monday, and it's the beginning of another work day."
-    "I should get ready to work."
+    you "Well. Today is Monday, and it's the beginning of another work day."
+    you "I should get ready to work."
     
     jump l_cycle
     
@@ -241,55 +243,51 @@ label l_pickpocket:
         "Ignore it":
             "Damn it, I really don't feel like dealing with thieves right now."
             "Turning my back on the scene, I let it pass and continue my patrol."
-            
-            # Ignore it (Allied w/ Thieves)
-            
-            "Must be one of (thief organization player allied with?). Just let him pass..."
+            "Must be one of [THIEVES_GUILD]. Just let him pass..."
             "Pretending not to notice, I continue my patrol."
         
         "Approach the man":
-            #(thief: oh, you're making a mistake)
             "I give it some time, keeping my distance as I follow the thief. He's on guard for a minute before he calms down, and I'm able to get closer without him noticing."
             "Moving in behind him, I keep quiet until I'm right on him, and grab his arm hard."
             thief "What?!"
             "He spins back. When he sees me, he struggles, but my grip is solid, he isn't getting away from me that easily."
-            "I saw you rob that woman."
+            you "I saw you rob that woman."
             "A grin breaks over his face, both mocking and worried at once."
             thief "Yeah? And what're you gonna do about it?"
             
             menu:
-                "Good question."
+                "Good question. What {i}am{/i} I going to do about it?"
                 
                 "Make him give the money back":
-                    "You're giving that money back, and then you're going to jail."
+                    you "You're giving that money back, and then you're going to jail."
                     "His grin widens."
                     thief "How about option three?"
                     "With his free hand, he tosses the coin purse up into the air."
-                    "Shit!"
+                    you "Shit!"
                     "I stagger backward, diving and falling flat on my back as I barely catch the bag to keep it from spilling its contents all over the ground."
-                    "Ugh. He got away."
+                    you "Ugh. He got away."
                     "By the time I've recovered and made it back to my feet, the thief is long gone."
-                    "At least I got the money back."
+                    you "At least I got the money back."
                     "After backtracking to where the woman was pickpocketed, I have to search the nearby areas before I find her."
-                    "Excuse me, Miss."
+                    you "Excuse me, Miss."
                     woman "Yes, constable?"
-                    "You were pickpocketed earlier. I recovered your coin purse for you."
+                    you "You were pickpocketed earlier. I recovered your coin purse for you."
                     "As soon as I show her the bag, her hand goes to her waist, searching for the missing purse."
                     woman "Oh, oh my! I didn't even..."
                     woman "Thank you so much!"
-                    "Just doing my job."
+                    you "Just doing my job."
                     "I hand back her coin purse, and she quickly fastens it back in place, before seeing me off."
                     "As I'm walking away, a random thought comes back to mind."
-                    "Did he say \"option three?\" I never gave him an option two..."
+                    you "Did he say \"option three?\" I never gave him an option two..."
                     "Shake my head, laughing a little to myself as I return to my patrol."
                 
                 "Don't bother":
-                    "Nothing."
+                    you "Nothing."
                     thief "Huh?"
-                    "I'm not going to do anything about it."
+                    you "I'm not going to do anything about it."
                     "I crack a grin."
-                    "I'm going to let you go, and you’re going to remember it."
-                    "You're going to owe me one. Remember that."
+                    you "I'm going to let you go, and you’re going to remember it."
+                    you "You're going to owe me one. Remember that."
                     "The man’s expression turns sour."
                     thief "Fair enough."
                     "He shakes off my hand and this time, I let him go. He huffs indignantly, and slouches off down the street."
@@ -305,7 +303,7 @@ label l_swindle:
     woman2 "I would ever so much love to purchase one of these. Like this..."
     merchant "Th-that? Just five coppers..."
     "Moving to a slightly different angle makes it clear that the cut of her blouse affords him quite a sight of the woman's cleavage."
-    "So it's like that..."
+    you "So it's like that..."
     
     menu:
         "Poor guy. Should I do something about it?"
@@ -313,14 +311,14 @@ label l_swindle:
         "Approach":
             "May as well."
             woman2 "Oh that would be wonderful, just let me..."
-            "Ah, those do look nice."
+            you "Ah, those do look nice."
             "When I cut in, the woman immediately straightens up."
             merchant "M-Miss?"
             "The guy's eyes move between us."
-            "Oh my, it seems I forgot my coinpurse. I'll be going now. Tata."
+            woman2 "Oh my, it seems I forgot my coinpurse. I'll be going now. Tata."
             "With a stiff wave of her fingers, she quickly heads off."
             merchant "Haah... Good going, you scared off my customer."
-            "She just said she didn't have any money."
+            you "She just said she didn't have any money."
             "He looks mildly displeased, but can't say anything in response."
             "With a shrug and a wave, I return to my patrol."
         
@@ -335,22 +333,22 @@ label l_swindle:
                 "Well, do you?"
                 
                 "Approach":
-                    "I've seen enough."
+                    you "I've seen enough."
                     "Walking quickly forward, I thump a hand down on the woman's shoulder, and she shoots back upright instantly."
-                    "Miss, if you have no money to pay for things, I think it's best if you move along."
+                    you "Miss, if you have no money to pay for things, I think it's best if you move along."
                     woman2 "Of-of course, constable."
                     "The woman flees quickly into the crowd."
-                    "Ehh, it's not like tricking the guy into giving her some chocolates is illegal, but still..."
+                    "It's not like tricking the guy into giving her some chocolates is illegal, but still..."
                     merchant "Aww..."
                     "I eye him, and he looks disappointed by the woman's departure."
                     "He hasn't even realized he was being swindled, has he?"
-                    "Have a nice day."
+                    you "Have a nice day."
                     "With a subtle shake of my head, I leave the foolish merchant behind, and return to my patrol."
                 "Let it go":
-                    "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
+                    you "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
                     "With a shrug of my shoulders, I leave the foolish merchant to his fate and return to my patrol."
         
         "Let it go":
-            "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
+            you "Ehh, it's not like tricking the guy into giving her some chocolates is illegal. If she swindles some chocolates out of him, maybe he'll learn a lesson."
             "With a shrug of my shoulders, I leave the foolish merchant to his fate and return to my patrol."
     return
