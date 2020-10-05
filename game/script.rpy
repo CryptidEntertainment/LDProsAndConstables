@@ -126,25 +126,25 @@ label l_intro:
             
             return
     
-    cap_unknown "Alright then, trainee. My name is Captain Louis Sirr, Guard Captain of the City Constables. I’m going to teach you about being a proper Constable."
+    cap_unknown "Alright then, trainee. My name is Captain Louis Sirr, Guard Captain of the City Constables. I'm going to teach you about being a proper Constable."
     
     menu:
-        cap "Are you ready, recruit? These next few days are going to be rough if you’re unprepared."
+        cap "Are you ready, recruit? These next few days are going to be rough if you're unprepared."
         "Yes sir.":
             cap "What did you just say to me?"
             
             menu:
                 cap "I don't think I heard you."
                 "Sir, yes sir!":
-                    cap "Now, that’s what I like to hear! First, we’ll begin with your equipment..."
+                    cap "Now, that's what I like to hear! First, we'll begin with your equipment..."
                     #!!!!!
-                "I, um, think I’m ready, sir?":
+                "I, um, think I'm ready, sir?":
                     # Guard Captain Sir puts his head in his hands and sighs.
-                    cap "We're going to have to work on that. Alright, let’s start with scrubbing the chamber pots..."
+                    cap "We're going to have to work on that. Alright, let's start with scrubbing the chamber pots..."
                     #!!!!!
             
-        "I don’t think I’m ready yet.":
-            cap "Well then, what are you doing here? This training is for those who want to be a guard! Don’t waste my time."
+        "I don't think I'm ready yet.":
+            cap "Well then, what are you doing here? This training is for those who want to be a guard! Don't waste my time."
             
             $ renpy.pause(1)
             hide sir with dissolve
@@ -155,6 +155,34 @@ label l_intro:
             $ renpy.pause(1)
             
             return
+    
+    $ renpy.pause(1)
+    hide sir with dissolve
+    $ renpy.pause(2)
+    
+    "A year ago, I had enlisted to join the City Constables. It was the day that I matured into a real adult: my 16th birthday."
+    "But I've been stagnating. Doing the same thing every single day, from wake to sleep, day in, day out."
+    "Wake up in the barracks."
+    "Stand on the street corner in the morning."
+    "Make the rounds about the marketplace in the afternoon."
+    "Report about the day to the Guard Captain."
+    "Prepare for the next day and go to sleep."
+    "I need to make a change. It's been on my mind for the last few months now, but I haven't had the time or energy to commit to changing anything."
+    "You know what? Screw it. Waiting forever and continuing to suffer sucks."
+    "If nothing changes by the end of the week, I'm gonna quit."
+    "Maybe I'll become a baker."
+    "(...but I don't even know how to bake bread...)"
+    "Whatever. I'll burn that bridge when I get to it."
+    "This week, I'm going to do something different. Maybe it'll go well, maybe it'll suck."
+    "But by the end of this week, either I'm going to be happy about my job, or I'll quit and live my life anew."
+    "That... That sounds pretty good."
+    "..."
+    "(Am I having my midlife crisis?)"
+    "(My life expectancy is around 35...)"
+    "(Ah, shit.)"
+    "..."
+    "Well. Today is Monday, and it's the beginning of another work day."
+    "I should get ready to work."
     
     return
 
