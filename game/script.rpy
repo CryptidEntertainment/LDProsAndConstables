@@ -18,6 +18,7 @@ default player_pronoun_cap_object = "Them"
 default player_pronoun_cap_possessive = "Their"
 
 default day_index = 0
+default day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
 image mom = "chicken.png"
 image shit = "shit.png"
@@ -30,37 +31,6 @@ image drunkard = "beer.png"
 label start:
     call l_intro
     
-    #jump l_loop
-    
-    return
-
-label l_loop:
-    call l_loop_morning
-    call l_loop_afternoon
-    call l_loop_checkin
-    call l_loop_evening
-    
-    $ day_index += 1
-    
-    if day_index > 3:
-        return
-    
-    jump l_loop
-
-label l_loop_morning:
-    "It is morning"
-    return
-
-label l_loop_afternoon:
-    "It is afternoon"
-    return
-
-label l_loop_checkin:
-    "It is checkin time"
-    return
-
-label l_loop_evening:
-    "It is evening"
     return
 
 label l_intro:
@@ -184,19 +154,40 @@ label l_intro:
     "Well. Today is Monday, and it's the beginning of another work day."
     "I should get ready to work."
     
+    jump l_cycle
+    
     return
 
-label l_urchin:
-    e "You have visited the urchin!"
-    $ status_urchin += 1
-    jump l_menu_post
+label l_cycle:
+    $ day_index_sub = 5 - day_index
+    $ day_index_name = day_names[day_index]
+    
+    "It’s the crack of dawn, and the sun has begun rising."
+    "Today is [day_index_name], with [day_index_sub] days until the end of the week."
+    "Time to don my chainmail and get ready for work."
+    menu:
+        "Grab your mace and get out there":
+            pass
 
-label l_thief:
-    e "You have visited the thief!"
-    $ status_thief += 1
-    jump l_menu_post
+    call l_morning
+    call l_afternoon
+    call l_night
+    
+    $ day_index += 1
+    
+    if day_index < 5:
+        jump l_cycle
+    
+    return
 
-label l_merchant:
-    e "You have visited the merchant!"
-    $ status_merchant += 1
-    jump l_menu_post
+label l_morning:
+    "Morning"
+    return
+
+label l_afternoon:
+    "Afternoon"
+    return
+
+label l_night:
+    "Night"
+    return
