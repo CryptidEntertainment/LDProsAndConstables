@@ -1,4 +1,3 @@
-*.txt
 tmp/
 cache/*.rpyb
 game/*.bak
@@ -13,4 +12,5 @@ game/*.png
 game/*.mp3
 game/*.ogg
 game/cache/*.rpyb
-*.txt
+errors.txt
+traceback.txt

@@ -1,0 +1,54 @@
+--------------------
+ PROS & CONSTABLES
+--------------------
+A SOCFAMS Production
+
+
+
+CREDITS:
+--------
+  Programming - Michael Peng
+  Character Art - Jess Mooney
+  Background Art - Michael Peng
+  Background Edits and Texturization - Jess Mooney
+  Narrative Writing - Ryan Canuel & Scott Taylor
+
+
+PROGRAMS USED:
+--------------
+  Game Engine - Ren'py (https://www.renpy.org/)
+  Krita
+  Adobe Photoshop
+
+
+MUSIC:
+------
+  Medieval Loop One by Alexander Nakarada | https://www.serpentsoundstudios.com
+  Music promoted by https://www.free-stock-music.com
+  Attribution 4.0 International (CC BY 4.0)
+  https://creativecommons.org/licenses/by/4.0/
+
+  Tavern Loop One by Alexander Nakarada | https://www.serpentsoundstudios.com
+  Music promoted by https://www.free-stock-music.com
+  Attribution 4.0 International (CC BY 4.0)
+  https://creativecommons.org/licenses/by/4.0/
+
+  Vopna by Alexander Nakarada | https://www.serpentsoundstudios.com
+  Music promoted by https://www.free-stock-music.com
+  Attribution 4.0 International (CC BY 4.0)
+  https://creativecommons.org/licenses/by/4.0/
+
+  Forest Walk by Alexander Nakarada | https://www.serpentsoundstudios.com
+  Music promoted by https://www.free-stock-music.com
+  Attribution 4.0 International (CC BY 4.0)
+  https://creativecommons.org/licenses/by/4.0/
+
+  Adventure by Alexander Nakarada | https://www.serpentsoundstudios.com
+  Music promoted by https://www.free-stock-music.com
+  Attribution 4.0 International (CC BY 4.0)
+  https://creativecommons.org/licenses/by/4.0
+
+  Fólkvangr by Alexander Nakarada | https://www.serpentsoundstudios.com
+  Music promoted by https://www.free-stock-music.com
+  Attribution 4.0 International (CC BY 4.0)
+  https://creativecommons.org/licenses/by/4.0/
