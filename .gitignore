@@ -5,6 +5,7 @@ game/*.rpyb
 game/*.rpyc
 game/saves/
 game/assets/
+game/tl/
 game/*.ico
 game/*.jpg
 game/*.jpeg
@@ -14,3 +15,4 @@ game/*.ogg
 game/cache/*.rpyb
 errors.txt
 traceback.txt
+log.txt
